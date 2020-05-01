@@ -4,6 +4,11 @@
 /* Includes */
 #include <SDL2/SDL.h>
 
+#include <SDL_image.h>
+
+#include <stdbool.h>
+
+
 /* Prototypes */
 int GameMain();
 
