@@ -1,2 +1,0 @@
-# ExaltedJupiter
-Game of Games

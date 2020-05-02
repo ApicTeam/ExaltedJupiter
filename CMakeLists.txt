@@ -1,7 +1,9 @@
-cmake_minimum_required(VERSION 3.15.3)
-project(ExaltedJupiter C)
+cmake_minimum_required(VERSION 3.16)
+project(ExaltedJupiter_dev C)
 
 set(CMAKE_C_STANDARD 11)
+
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 find_package(SDL2 REQUIRED)
@@ -11,5 +13,5 @@ include_directories(${SDL2_INCLUDE_DIRS})
 include_directories(${SDL2_IMAGE_DIRS})
 include_directories(inc)
 
-add_executable(ExaltedJupiter main.c src/game.c)
-target_link_libraries(ExaltedJupiter ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -mconsole -mwindows)
+add_executable(ExaltedJupiter_dev main.c inc/game.h src/game.c inc/minilib.h src/sdl_configs/sdl_initialization.c src/utils/error_handler.c src/sdl_configs/sdl_base.c src/sdl_configs/sdl_utils.c src/render/render_hero.c src/utils/garbage_collector.c src/hero/movment/move_manager.c src/hero/animation/animation.c src/levels/lvl0/create_lvl.c src/levels/main_menu/create_lvl.c src/levels/test/create_lvl.c)
+target_link_libraries(ExaltedJupiter_dev ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image)

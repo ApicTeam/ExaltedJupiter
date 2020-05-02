@@ -1,0 +1,4 @@
+C:\Users\Fight\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\201.6668.126\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\Fight\CLionProjects\ExaltedJupiter_dev
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/Fight/CLionProjects/ExaltedJupiter_dev/cmake-build-debug
