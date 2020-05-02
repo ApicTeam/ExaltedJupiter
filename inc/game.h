@@ -7,6 +7,18 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_timer.h>
 
+/* Structures */
+typedef struct s_animation
+{
+    SDL_Rect *windowsRect;
+    SDL_Rect *textureRect;
+    SDL_Renderer *renderer;
+
+    char *filepath;
+    int delayPerFrame;
+    int totalFrames;
+}               t_animation;
+
 /* Enumerations */
 typedef enum e_error
 {
@@ -48,6 +60,9 @@ typedef enum e_anim_state
         /* Levels */
         int Level0Loop();
         void Level1Loop();
+
+        /* Animations */
+        SDL_Texture *Animation(t_animation *tAnimation);
 
 /* Utils */
 void raise_error(t_error error_id);

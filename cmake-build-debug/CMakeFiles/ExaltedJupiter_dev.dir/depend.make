@@ -8,6 +8,8 @@ CMakeFiles/ExaltedJupiter_dev.dir/src/game.c.obj: ../inc/game.h
 CMakeFiles/ExaltedJupiter_dev.dir/src/game.c.obj: ../inc/minilib.h
 CMakeFiles/ExaltedJupiter_dev.dir/src/game.c.obj: ../src/game.c
 
+CMakeFiles/ExaltedJupiter_dev.dir/src/hero/animation/animation.c.obj: ../inc/game.h
+CMakeFiles/ExaltedJupiter_dev.dir/src/hero/animation/animation.c.obj: ../inc/minilib.h
 CMakeFiles/ExaltedJupiter_dev.dir/src/hero/animation/animation.c.obj: ../src/hero/animation/animation.c
 
 CMakeFiles/ExaltedJupiter_dev.dir/src/hero/movment/move_manager.c.obj: ../inc/game.h

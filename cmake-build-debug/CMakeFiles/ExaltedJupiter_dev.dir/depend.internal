@@ -9,6 +9,8 @@ CMakeFiles/ExaltedJupiter_dev.dir/src/game.c.obj
  ../inc/minilib.h
  C:/Users/Fight/CLionProjects/ExaltedJupiter_dev/src/game.c
 CMakeFiles/ExaltedJupiter_dev.dir/src/hero/animation/animation.c.obj
+ ../inc/game.h
+ ../inc/minilib.h
  C:/Users/Fight/CLionProjects/ExaltedJupiter_dev/src/hero/animation/animation.c
 CMakeFiles/ExaltedJupiter_dev.dir/src/hero/movment/move_manager.c.obj
  ../inc/game.h
