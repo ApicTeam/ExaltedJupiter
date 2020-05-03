@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Fight/CLionProjects/ExaltedJupiter_dev
+# Install script for directory: C:/CLionProjects/ExaltedJupiter_dev/ExaltedJupiter
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Fight/CLionProjects/ExaltedJupiter_dev/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/CLionProjects/ExaltedJupiter_dev/ExaltedJupiter/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
