@@ -1,24 +1,14 @@
 #include "game.h"
 #include "minilib.h"
 
-void HeroMove(SDL_Scancode key, int state)
+void HeroMove(t_direction direction, int x_pos, int y_pos,  SDL_Rect *windowRect)
 {
-    switch (key)
-    {
-        case SDL_SCANCODE_W:
-            break;
+    /* Variable Definitions */
+    int x_vel = 0;
 
-        case SDL_SCANCODE_A:
-            break;
+    if (direction == 1 || direction == 4) x_vel = -300;
+    if (direction == 2 || direction == 3) x_vel =  300;
 
-        case SDL_SCANCODE_S:
-            break;
-
-        case SDL_SCANCODE_D:
-            break;
-
-        /* Just for handel all keys */
-        default:
-            break;
-    }
+    windowRect->x += x_pos / 60;
+    windowRect->y += y_pos / 60;
 }

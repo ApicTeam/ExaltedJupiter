@@ -17,9 +17,20 @@ typedef struct s_animation
     char *filepath;
     int delayPerFrame;
     int totalFrames;
+    
+    int direction;
+
 }               t_animation;
 
 /* Enumerations */
+
+typedef enum e_direction
+{
+    IDLE,
+    LEFT,
+    RIGHT
+}           t_direction;
+
 typedef enum e_error
 {
     INIT_ERROR_SDL,
@@ -29,16 +40,16 @@ typedef enum e_error
     LOAD_TEXTURE_ERROR
 }            t_error;
 
-typedef enum e_anim_state
-{
-    IDLE,
-    LEFT,
-    RIGHT,
-    JUMP,
-    ATTACK,
-    TAKE_DAMAGE,
-    DIE
-}            t_anim_state;
+//typedef enum e_anim_state
+//{
+//    IDLE,
+//    LEFT,
+//    RIGHT,
+//    JUMP,
+//    ATTACK,
+//    TAKE_DAMAGE,
+//    DIE
+//}            t_anim_state;
 
 /* Prototypes */
     /* Game Parts */
@@ -52,10 +63,10 @@ typedef enum e_anim_state
             SDL_Texture *LoadTexture(const char *filepath, SDL_Renderer *renderer);
             void RenderTextureByInput(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y, int w, int h);
             void RenderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y);
-            SDL_Texture *RenderHero(int frame, t_anim_state state, SDL_Renderer *renderer);
+//            SDL_Texture *RenderHero(int frame, t_anim_state state, SDL_Renderer *renderer);
 
         /* Main Hero */
-        void HeroMove(SDL_Scancode key, int state);
+        void HeroMove(t_direction direction, int x_pos, int y_pos,  SDL_Rect *windowRect);
 
         /* Levels */
         int Level0Loop();

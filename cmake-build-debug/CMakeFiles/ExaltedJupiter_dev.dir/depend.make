@@ -28,7 +28,6 @@ CMakeFiles/ExaltedJupiter_dev.dir/src/levels/test/create_lvl.c.obj: ../inc/game.
 CMakeFiles/ExaltedJupiter_dev.dir/src/levels/test/create_lvl.c.obj: ../inc/minilib.h
 CMakeFiles/ExaltedJupiter_dev.dir/src/levels/test/create_lvl.c.obj: ../src/levels/test/create_lvl.c
 
-CMakeFiles/ExaltedJupiter_dev.dir/src/render/render_hero.c.obj: ../inc/game.h
 CMakeFiles/ExaltedJupiter_dev.dir/src/render/render_hero.c.obj: ../src/render/render_hero.c
 
 CMakeFiles/ExaltedJupiter_dev.dir/src/sdl_configs/sdl_base.c.obj: ../inc/game.h
