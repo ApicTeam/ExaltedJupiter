@@ -230,7 +230,7 @@ void Level1Loop(int wW, int wH)
 {
 
     /* Music */
-    Mix_Chunk *stepSound = Mix_LoadWAV("../resource/music/hero_sound/steps_0.mp3");
+    Mix_Chunk *stepSound = Mix_LoadWAV("../resource/music/hero_sound/steps.mp3");
     if (!stepSound)
         SDL_Log("%s", Mix_GetError());
 
@@ -344,6 +344,11 @@ void Level1Loop(int wW, int wH)
         // TODO Fix multiply touch W/A or S/D
         if (!left && !right && !down && !up)
         {
+            if (Mix_Playing(0))
+          {
+              SDL_Log("Stop Music");
+              Mix_HaltChannel(0);
+          }
             CurrentHeroA.filepath = "../resource/characters/main_hero/idle/hero_idle.png";
             CurrentHeroA.totalFrames = 3;
             CurrentHeroA.delayPerFrame = 255;
@@ -412,8 +417,8 @@ void Level1Loop(int wW, int wH)
         }
 
         if (up || down || left || right) {
-          if (!Mix_Playing(-1))
-              Mix_PlayChannel(-1, stepSound, 0);
+          if (!Mix_Playing(0))
+              Mix_PlayChannel(0, stepSound, 0);
         }
 
         CurrentHeroT = Animation(&CurrentHeroA);

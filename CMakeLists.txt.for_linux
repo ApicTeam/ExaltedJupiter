@@ -17,4 +17,4 @@ add_executable(ExaltedJupiter_dev main.c inc/game.h src/game.c inc/minilib.h src
         src/levels/Map/Map.c)
 # target_link_libraries(ExaltedJupiter_dev ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image)
 
-target_link_libraries(ExaltedJupiter_dev -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
+target_link_libraries(ExaltedJupiter_dev -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
