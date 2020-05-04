@@ -17,8 +17,8 @@ SDL_Texture *Animation(t_animation *tAnimation)//SDL_Rect *windowRect, SDL_Rect 
     if (tAnimation->textureRect -> w == 0 || tAnimation->windowsRect -> w == 0)
     {
 
-        tAnimation->windowsRect -> x = 0;
-        tAnimation->windowsRect -> y = 550;
+        tAnimation->windowsRect -> x = 300;
+        tAnimation->windowsRect -> y = 250;
         tAnimation->windowsRect -> w = 150;
         tAnimation->windowsRect -> h = 150;
 
@@ -37,40 +37,6 @@ SDL_Texture *Animation(t_animation *tAnimation)//SDL_Rect *windowRect, SDL_Rect 
 //    if (tAnimation->direction == RIGHT) velocity = -300;
 //    x_pos += velocity / 60;
 //    tAnimation->windowsRect->x = x_pos;
-
-    return HeroIdle;
-}
-
-SDL_Texture *RunAnimation(SDL_Rect *windowRect, SDL_Rect *textureRect, SDL_Renderer *renderer)
-{
-    /* Textures */
-    SDL_Texture *HeroIdle = LoadTexture("../resource/characters/main_hero/run/hero_run.png", renderer);
-
-    /* Base Variables */
-    int delayPerFrame = 100;
-    int totalFrames = 6;
-    int frame = (SDL_GetTicks() / delayPerFrame) % totalFrames;
-
-    /* Main Logic */
-
-    /* Initialize Structures */
-    if (textureRect -> w == 0 || windowRect -> w == 0)
-    {
-
-        windowRect -> x = 0;
-        windowRect -> y = 0;
-        windowRect -> w = 150;
-        windowRect -> h = 150;
-
-        textureRect -> x = 0;
-        textureRect -> y = 0;
-
-        SDL_QueryTexture(HeroIdle, NULL, NULL, &textureRect->w, &textureRect->h);
-
-        textureRect -> w /= totalFrames;
-    }
-
-    textureRect -> x = frame * textureRect -> w;
 
     return HeroIdle;
 }

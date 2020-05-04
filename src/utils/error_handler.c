@@ -16,6 +16,16 @@ void raise_error(t_error error_id)
             SDL_Quit();
             exit(1);
 
+        case INIT_ERROR_AUDIO:
+            fprintf(stderr, "SDL_Image_Audio Error: %s\n", IMG_GetError());
+            SDL_Quit();
+            exit(1);
+
+        case INIT_ERROR_MIXER:
+            fprintf(stderr, "SDL_Image_Mixer Error: %s\n", IMG_GetError());
+            SDL_Quit();
+            exit(1);
+
         case WINDOWS_ERROR:
             fprintf(stderr, "SDL_CreateWindow Error: %s\n", SDL_GetError());
             SDL_Quit();

@@ -1,12 +1,9 @@
 #include "game.h"
-
 #include "minilib.h"
 
 /**
  * TODO Main
  */
-
-
 
 
 int GameMain()
@@ -22,8 +19,10 @@ int GameMain()
      */
 
     /* Create Level 0 */
-    Level1Loop();
+    Level0Loop();
 
+
+    Mix_Quit();
 
 
     return 0;

@@ -1,17 +1,53 @@
 #include "game.h"
 #include "minilib.h"
+#include "maps.h"
 
-void Level1Loop()
+SDL_Renderer *renderer = NULL;
+
+int lvl1[20][25] = {
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 3, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 3, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 3, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+
+};
+
+void Level1Loop(int wW, int wH)
 {
+
+    /* Music */
+    Mix_Chunk *stepSound = Mix_LoadWAV("../resource/music/hero_sound/steps.mp3");
+    if (!stepSound)
+        SDL_Log("%s", Mix_GetError());
+
+    SDL_Rect camera = {0, 0, 1600, 800};
+
     /* Base Variables */
-    SDL_Window *window = CreateWindow();
-    SDL_Renderer *renderer = CreateRenderer(window);
+    SDL_Window *window = CreateWindow(wW, wH);
+    renderer = CreateRenderer(window);
 
     SDL_Event event;
     bool quit = false;
 
     /* Textures */
     SDL_Texture *Background = LoadTexture("../resource/background/background_1.png", renderer);
+    TextureMap text = Map(renderer, lvl1);
 
     /* Make Rectangles */
 
@@ -27,11 +63,11 @@ void Level1Loop()
 
     SDL_Texture *CurrentHeroT;
     t_animation CurrentHeroA =
-    {
-        .windowsRect = &windowRect, .textureRect = &textureRect,
-        .renderer = renderer, .filepath = "../resource/characters/main_hero/idle/hero_idle.png",
-        .delayPerFrame = 255, .totalFrames = 3
-    };
+            {
+                    .windowsRect = &windowRect, .textureRect = &textureRect,
+                    .renderer = renderer, .filepath = "../resource/characters/main_hero/idle/hero_idle.png",
+                    .delayPerFrame = 255, .totalFrames = 3
+            };
 
     int scene_counter = 0;
     int left = 0;
@@ -110,6 +146,11 @@ void Level1Loop()
         // TODO Fix multiply touch W/A or S/D
         if (!left && !right && !down && !up)
         {
+            if (Mix_Playing(0))
+          {
+              SDL_Log("Stop Music");
+              Mix_HaltChannel(0);
+          }
             CurrentHeroA.filepath = "../resource/characters/main_hero/idle/hero_idle.png";
             CurrentHeroA.totalFrames = 3;
             CurrentHeroA.delayPerFrame = 255;
@@ -177,12 +218,20 @@ void Level1Loop()
             HeroMove(dir, 0, 300, &windowRect);
         }
 
+        if (up || down || left || right) {
+          if (!Mix_Playing(0))
+              Mix_PlayChannel(0, stepSound, 0);
+        }
+
         CurrentHeroT = Animation(&CurrentHeroA);
+
+        camera.x = windowRect.x - 800;
+        camera.y = windowRect.y - 400;
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
         RenderTextureByInput(Background, renderer, 0, 0, 1600, 800);
-
+        DrawMap(renderer, &text);
         //Copying the texture on to the window using
         //renderer, texture rectangle and window rectangle
 
@@ -193,7 +242,7 @@ void Level1Loop()
 
         SDL_Delay(1000/60);
         SDL_RenderPresent(renderer);
-        SDL_Log("Scene: %d\n\n", scene_counter++);
+//        SDL_Log("Scene: %d\n\n", scene_counter++);
 
     }
 }
