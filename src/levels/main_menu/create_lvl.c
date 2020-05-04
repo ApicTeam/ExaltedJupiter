@@ -30,9 +30,17 @@ int Level0Loop()
     /* Base Variables */
     init();
 
+
+    /* Music */
+    Mix_Music *bgMusic = Mix_LoadMUS("../resource/music/Ruined.mp3");
+
+    if (!bgMusic)
+        exit(5);
+
     /* Texture */
     SDL_Texture *bgT;
     SDL_Texture *logoT;
+
     /* Buttons */
     SDL_Texture *playBtnT = LoadTexture("../resource/buttons/main_menu/play_ss.png", levelStruct.renderer);
 
@@ -59,6 +67,8 @@ int Level0Loop()
     /* Level Loop */
     bool quit = false;
     bool next = false;
+
+    Mix_PlayMusic(bgMusic, -1);
 
     while (!quit)
     {
@@ -112,8 +122,10 @@ int Level0Loop()
     SDL_DestroyWindow(levelStruct.window);
 
     if (next)
+    {
+        Mix_FreeMusic(bgMusic);
         Level1Loop(1600, 800);
-
+    }
     IMG_Quit();
     SDL_Quit();
 

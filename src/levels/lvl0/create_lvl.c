@@ -228,7 +228,14 @@ int lvl1[20][25] = {
 
 void Level1Loop(int wW, int wH)
 {
+
+    /* Music */
+    Mix_Chunk *stepSound = Mix_LoadWAV("../resource/music/hero_sound/steps_0.mp3");
+    if (!stepSound)
+        SDL_Log("%s", Mix_GetError());
+
     SDL_Rect camera = {0, 0, 1600, 800};
+
     /* Base Variables */
     SDL_Window *window = CreateWindow(wW, wH);
     renderer = CreateRenderer(window);
