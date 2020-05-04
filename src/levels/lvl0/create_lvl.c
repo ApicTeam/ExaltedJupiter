@@ -39,7 +39,7 @@ void Level1Loop()
 
         /* Textures */
         SDL_Texture *Background = LoadTexture("../resource/background/background_1.png", renderer);
-        TextureMap *text = Map(renderer, lvl1);
+        TextureMap text = Map(renderer, lvl1);
 
         /* Make Rectangles */
 
@@ -210,7 +210,7 @@ void Level1Loop()
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
         RenderTextureByInput(Background, renderer, 0, 0, 1600, 800);
-        DrawMap(renderer, text);
+        DrawMap(renderer, &text);
         //Copying the texture on to the window using
         //renderer, texture rectangle and window rectangle
 

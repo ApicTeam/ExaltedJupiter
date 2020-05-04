@@ -7,28 +7,28 @@
 
 
 
-TextureMap *Map(SDL_Renderer *renderer, int arr[20][25])
+TextureMap Map(SDL_Renderer *renderer, int arr[20][25])
 {
-    TextureMap* text = malloc(sizeof(TextureMap*));
-    text -> wallDown = LoadTexture("../resource/tiles/wall_mid.png", renderer);
-    text -> wallUp = LoadTexture("../resource/tiles/wall_top_left.png", renderer);
-    text -> wallLeft = LoadTexture("../resource/tiles/wall_side_mid_left.png", renderer);
-    text -> wallRight = LoadTexture("../resource/tiles/wall_side_mid_right.png", renderer);
+    TextureMap text;
+    text . wallDown = LoadTexture("../resource/tiles/wall_mid.png", renderer);
+    text . wallUp = LoadTexture("../resource/tiles/wall_top_left.png", renderer);
+    text . wallLeft = LoadTexture("../resource/tiles/wall_side_mid_left.png", renderer);
+    text . wallRight = LoadTexture("../resource/tiles/wall_side_mid_right.png", renderer);
 
     //LOAD MAP
     for (int row = 0; row < 20; row++)
     {
         for(int column = 0; column < 25; column++)
         {
-            text -> map[row][column] = arr[row][column];
+            text . map[row][column] = arr[row][column];
         }
     }
 
-    text -> src.x = text -> src.y = 0;
+    text . src.x = text . src.y = 0;
 
-    text -> dest.x = text -> dest.y = 0;
+    text . dest.x = text . dest.y = 0;
 
-    text -> src.w = text -> dest.w = text -> src.h = text -> dest.h = 32;
+    text . src.w = text . dest.w = text . src.h = text . dest.h = 64;
 
     return text;
 
@@ -45,8 +45,8 @@ void DrawMap(SDL_Renderer *renderer, TextureMap *text)
         {
             type = text -> map[row][column];
 
-            text -> dest.x = column * 32;
-            text -> dest.y = row * 32;
+            text -> dest.x = column * 64;
+            text -> dest.y = row * 64;
 
             switch (type)
             {
