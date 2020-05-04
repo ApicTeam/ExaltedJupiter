@@ -25,14 +25,21 @@ typedef struct s_texture_ss
 
 typedef struct Textures
 {
+    SDL_Texture *backGroundCornerRight;
+    SDL_Texture *backGroundCornerLeft;
+    SDL_Texture* backGroundWall;
     SDL_Texture* wallDown;
     SDL_Texture* wallUp;
     SDL_Texture* wallLeft;
     SDL_Texture* wallRight;
-    SDL_Texture *wallCornerTopLeft;
-    SDL_Texture *wallCornerTopRight;
+    SDL_Texture *wallOuterCornerTopLeft;
+    SDL_Texture *wallOuterCornerTopRight;
+    SDL_Texture *wallOuterCornerDownLeft;
+    SDL_Texture *wallOuterCornerDownRight;
     SDL_Texture *wallInnerCornerTopLeft;
     SDL_Texture *wallInnerCornerTopRight;
+    SDL_Texture *wallInnerCornerDownLeft;
+    SDL_Texture *wallInnerCornerDownRight;
 
     SDL_Rect  dest, src ;
 
