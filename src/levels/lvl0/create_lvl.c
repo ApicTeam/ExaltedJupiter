@@ -1,17 +1,45 @@
 #include "game.h"
 #include "minilib.h"
+#include "maps.h"
+
+SDL_Renderer *renderer = NULL;
+
+int lvl1[20][25] = {
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 3, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 3, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 3, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+
+};
 
 void Level1Loop()
 {
     /* Base Variables */
     SDL_Window *window = CreateWindow();
-    SDL_Renderer *renderer = CreateRenderer(window);
+    renderer = CreateRenderer(window);
 
     SDL_Event event;
     bool quit = false;
 
     /* Textures */
     SDL_Texture *Background = LoadTexture("../resource/background/background_1.png", renderer);
+    TextureMap *text = Map(renderer, lvl1);
 
     /* Make Rectangles */
 
@@ -27,11 +55,11 @@ void Level1Loop()
 
     SDL_Texture *CurrentHeroT;
     t_animation CurrentHeroA =
-    {
-        .windowsRect = &windowRect, .textureRect = &textureRect,
-        .renderer = renderer, .filepath = "../resource/characters/main_hero/idle/hero_idle.png",
-        .delayPerFrame = 255, .totalFrames = 3
-    };
+            {
+                    .windowsRect = &windowRect, .textureRect = &textureRect,
+                    .renderer = renderer, .filepath = "../resource/characters/main_hero/idle/hero_idle.png",
+                    .delayPerFrame = 255, .totalFrames = 3
+            };
 
     int scene_counter = 0;
     int left = 0;
@@ -47,142 +75,142 @@ void Level1Loop()
 
     while (!quit)
     {
-        anim = false;
-        int wasLeft = false;
-
-        while (SDL_PollEvent(&event))
-        {
-            if (event.type == SDL_QUIT) quit = true;
-
-            if (event.type == SDL_KEYDOWN)
-            {
-                if (event.key.keysym.scancode == SDL_SCANCODE_W)
-                {
-                    up = 1;
-                    dir = 3;
-                }
-                else if (event.key.keysym.scancode == SDL_SCANCODE_S)
-                {
-                    down = 1;
-                    dir = 4;
-                }
-                else if (event.key.keysym.scancode == SDL_SCANCODE_D)
-                {
-                    flip = false;
-                    right = 1;
-                    dir = 2;
-                }
-                else if (event.key.keysym.scancode == SDL_SCANCODE_A)
-                {
-                    left = 1;
-                    dir = 1;
-                }
-            }
-            else if (event.type == SDL_KEYUP)
-            {
-                if (event.key.keysym.scancode == SDL_SCANCODE_D)
-                {
-                    wasLeft = false;
-                    right = 0;
-                    dir = 0;
-                }
-                else if (event.key.keysym.scancode == SDL_SCANCODE_A)
-                {
-                    flip = false;
-                    wasLeft = true;
-                    left = 0;
-                    dir = 0;
-                }
-                else if (event.key.keysym.scancode == SDL_SCANCODE_W)
-                {
-                    up = 0;
-                }
-                else if (event.key.keysym.scancode == SDL_SCANCODE_S)
-                {
-                    down = 0;
-                }
-            }
-        }
-
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-        SDL_RenderClear(renderer);
-
-        // TODO Fix multiply touch W/A or S/D
-        if (!left && !right && !down && !up)
-        {
-            CurrentHeroA.filepath = "../resource/characters/main_hero/idle/hero_idle.png";
-            CurrentHeroA.totalFrames = 3;
-            CurrentHeroA.delayPerFrame = 255;
-            if(wasLeft)
-                flip = true;
-        }
-
-        if (left && up)
-        {
-            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run.png";
-            CurrentHeroA.totalFrames = 6;
-            CurrentHeroA.delayPerFrame = 100;
-            HeroMove(dir, -300, -300, &windowRect);
-            flip = true;
-        }
-        else if (left && down)
-        {
-            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run.png";
-            CurrentHeroA.totalFrames = 6;
-            CurrentHeroA.delayPerFrame = 100;
-            HeroMove(dir, -300, 300, &windowRect);
-            flip = true;
-        }
-        else if (right && up)
-        {
-            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run.png";
-            CurrentHeroA.totalFrames = 6;
-            CurrentHeroA.delayPerFrame = 100;
-            HeroMove(dir, 300, -300, &windowRect);
-        }
-        else if (right && down)
-        {
-            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run.png";
-            CurrentHeroA.totalFrames = 6;
-            CurrentHeroA.delayPerFrame = 100;
-            HeroMove(dir, 300, 300, &windowRect);
-        }
-        else if (left)
-        {
-            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run.png";
-            CurrentHeroA.totalFrames = 6;
-            CurrentHeroA.delayPerFrame = 100;
-            HeroMove(dir, -300, 0, &windowRect);
-            flip = true;
-        }
-        else if (right)
-        {
-            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run.png";
-            CurrentHeroA.totalFrames = 6;
-            CurrentHeroA.delayPerFrame = 100;
-            HeroMove(dir, 300, 0, &windowRect);
-        }
-        else if (up)
-        {
-            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run_up.png";
-            CurrentHeroA.totalFrames = 4;
-            CurrentHeroA.delayPerFrame = 100;
-            HeroMove(dir, 0, -300, &windowRect);
-        }
-        else if (down)
-        {
-            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run_down.png";
-            CurrentHeroA.totalFrames = 4;
-            CurrentHeroA.delayPerFrame = 100;
-            HeroMove(dir, 0, 300, &windowRect);
-        }
-
-        CurrentHeroT = Animation(&CurrentHeroA);
+//        anim = false;
+//        int wasLeft = false;
+//
+//        while (SDL_PollEvent(&event))
+//        {
+//            if (event.type == SDL_QUIT) quit = true;
+//
+//            if (event.type == SDL_KEYDOWN)
+//            {
+//                if (event.key.keysym.scancode == SDL_SCANCODE_W)
+//                {
+//                    up = 1;
+//                    dir = 3;
+//                }
+//                else if (event.key.keysym.scancode == SDL_SCANCODE_S)
+//                {
+//                    down = 1;
+//                    dir = 4;
+//                }
+//                else if (event.key.keysym.scancode == SDL_SCANCODE_D)
+//                {
+//                    flip = false;
+//                    right = 1;
+//                    dir = 2;
+//                }
+//                else if (event.key.keysym.scancode == SDL_SCANCODE_A)
+//                {
+//                    left = 1;
+//                    dir = 1;
+//                }
+//            }
+//            else if (event.type == SDL_KEYUP)
+//            {
+//                if (event.key.keysym.scancode == SDL_SCANCODE_D)
+//                {
+//                    wasLeft = false;
+//                    right = 0;
+//                    dir = 0;
+//                }
+//                else if (event.key.keysym.scancode == SDL_SCANCODE_A)
+//                {
+//                    flip = false;
+//                    wasLeft = true;
+//                    left = 0;
+//                    dir = 0;
+//                }
+//                else if (event.key.keysym.scancode == SDL_SCANCODE_W)
+//                {
+//                    up = 0;
+//                }
+//                else if (event.key.keysym.scancode == SDL_SCANCODE_S)
+//                {
+//                    down = 0;
+//                }
+//            }
+//        }
+//
+//        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+//        SDL_RenderClear(renderer);
+//
+//        // TODO Fix multiply touch W/A or S/D
+//        if (!left && !right && !down && !up)
+//        {
+//            CurrentHeroA.filepath = "../resource/characters/main_hero/idle/hero_idle.png";
+//            CurrentHeroA.totalFrames = 3;
+//            CurrentHeroA.delayPerFrame = 255;
+//            if(wasLeft)
+//                flip = true;
+//        }
+//
+//        if (left && up)
+//        {
+//            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run.png";
+//            CurrentHeroA.totalFrames = 6;
+//            CurrentHeroA.delayPerFrame = 100;
+//            HeroMove(dir, -300, -300, &windowRect);
+//            flip = true;
+//        }
+//        else if (left && down)
+//        {
+//            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run.png";
+//            CurrentHeroA.totalFrames = 6;
+//            CurrentHeroA.delayPerFrame = 100;
+//            HeroMove(dir, -300, 300, &windowRect);
+//            flip = true;
+//        }
+//        else if (right && up)
+//        {
+//            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run.png";
+//            CurrentHeroA.totalFrames = 6;
+//            CurrentHeroA.delayPerFrame = 100;
+//            HeroMove(dir, 300, -300, &windowRect);
+//        }
+//        else if (right && down)
+//        {
+//            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run.png";
+//            CurrentHeroA.totalFrames = 6;
+//            CurrentHeroA.delayPerFrame = 100;
+//            HeroMove(dir, 300, 300, &windowRect);
+//        }
+//        else if (left)
+//        {
+//            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run.png";
+//            CurrentHeroA.totalFrames = 6;
+//            CurrentHeroA.delayPerFrame = 100;
+//            HeroMove(dir, -300, 0, &windowRect);
+//            flip = true;
+//        }
+//        else if (right)
+//        {
+//            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run.png";
+//            CurrentHeroA.totalFrames = 6;
+//            CurrentHeroA.delayPerFrame = 100;
+//            HeroMove(dir, 300, 0, &windowRect);
+//        }
+//        else if (up)
+//        {
+//            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run_up.png";
+//            CurrentHeroA.totalFrames = 4;
+//            CurrentHeroA.delayPerFrame = 100;
+//            HeroMove(dir, 0, -300, &windowRect);
+//        }
+//        else if (down)
+//        {
+//            CurrentHeroA.filepath = "../resource/characters/main_hero/run/hero_run_down.png";
+//            CurrentHeroA.totalFrames = 4;
+//            CurrentHeroA.delayPerFrame = 100;
+//            HeroMove(dir, 0, 300, &windowRect);
+//        }
+//
+//        CurrentHeroT = Animation(&CurrentHeroA);
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
         RenderTextureByInput(Background, renderer, 0, 0, 1600, 800);
-
+        DrawMap(renderer, text);
         //Copying the texture on to the window using
         //renderer, texture rectangle and window rectangle
 
