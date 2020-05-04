@@ -14,8 +14,12 @@ TextureMap Map(SDL_Renderer *renderer, int arr[20][25])
     text . wallUp = LoadTexture("../resource/tiles/wall_top_left.png", renderer);
     text . wallLeft = LoadTexture("../resource/tiles/wall_side_mid_left.png", renderer);
     text . wallRight = LoadTexture("../resource/tiles/wall_side_mid_right.png", renderer);
+    text.wallCornerTopLeft = LoadTexture("../resource/tiles/wall_side_top_left.png", renderer);
+    text.wallCornerTopRight = LoadTexture("../resource/tiles/wall_side_top_right.png", renderer);
+    text.wallInnerCornerTopRight = LoadTexture("../resource/tiles/wall_inner_corner_l_top_rigth.png", renderer);
+    text.wallInnerCornerTopLeft = LoadTexture("../resource/tiles/wall_inner_corner_l_top_left.png", renderer);
 
-    //LOAD MAP
+  //LOAD MAP
     for (int row = 0; row < 20; row++)
     {
         for(int column = 0; column < 25; column++)
@@ -61,6 +65,18 @@ void DrawMap(SDL_Renderer *renderer, TextureMap *text)
                     break;
                 case 4:
                     SDL_RenderCopy(renderer, text -> wallRight, &(text -> src), &(text -> dest));
+                    break;
+                case 5:
+                    SDL_RenderCopy(renderer, text -> wallCornerTopLeft, &(text -> src), &(text -> dest));
+                    break;
+                case 6:
+                    SDL_RenderCopy(renderer, text -> wallCornerTopRight, &(text -> src), &(text -> dest));
+                    break;
+                case 7:
+                    SDL_RenderCopy(renderer, text -> wallInnerCornerTopLeft, &(text -> src), &(text -> dest));
+                    break;
+                case 8:
+                    SDL_RenderCopyEx(renderer, text -> wallInnerCornerTopRight, &(text -> src), &(text -> dest), 90, NULL, SDL_FLIP_HORIZONTAL);
                     break;
                 default:
                     break;

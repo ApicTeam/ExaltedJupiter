@@ -19,7 +19,7 @@ int GameMain()
      */
 
     /* Create Level 0 */
-    Level0Loop();
+    Level2Loop(1600, 800);
 
 
     Mix_Quit();
