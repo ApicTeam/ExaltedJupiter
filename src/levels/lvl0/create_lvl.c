@@ -411,6 +411,11 @@ void Level1Loop(int wW, int wH)
             HeroMove(dir, 0, 300, &windowRect);
         }
 
+        if (up || down || left || right) {
+          if (!Mix_Playing(-1))
+              Mix_PlayChannel(-1, stepSound, 0);
+        }
+
         CurrentHeroT = Animation(&CurrentHeroA);
 
         camera.x = windowRect.x - 800;
@@ -430,7 +435,7 @@ void Level1Loop(int wW, int wH)
 
         SDL_Delay(1000/60);
         SDL_RenderPresent(renderer);
-        SDL_Log("Scene: %d\n\n", scene_counter++);
+//        SDL_Log("Scene: %d\n\n", scene_counter++);
 
     }
 }
