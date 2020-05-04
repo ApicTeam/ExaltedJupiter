@@ -1,6 +1,6 @@
 #include "game.h"
 
-SDL_Window *CreateWindow(int wW, int wH)
+SDL_Window *CreateWindow()
 {
 
     /*
@@ -8,7 +8,10 @@ SDL_Window *CreateWindow(int wW, int wH)
      * TODO Create start menu like in unity
      */
 
-    SDL_Window *window = SDL_CreateWindow("Exalted Jupiter", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, wW, wH, 0);
+    SDL_Window *window = SDL_CreateWindow("Exalted Jupiter", SDL_WINDOWPOS_CENTERED,
+                                          SDL_WINDOWPOS_CENTERED,
+                                          1600,
+                                          800, 0);
 
     if (!window)
         raise_error(WINDOWS_ERROR);
