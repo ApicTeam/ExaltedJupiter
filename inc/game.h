@@ -6,20 +6,21 @@
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_timer.h>
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_ttf.h>
 
 /* Structures */
 
-typedef struct Textures
+typedef struct s_texture_ss
 {
-    SDL_Texture* wallDown;
-    SDL_Texture* wallUp;
-    SDL_Texture* wallLeft;
-    SDL_Texture* wallRight;
+    SDL_Texture *texture;
 
-    SDL_Rect  dest, src ;
+    int frames_count;
 
-    int map[20][25];
-}                  TextureMap;
+    SDL_Rect texSize;
+    SDL_Rect frame;
+
+}               t_texture_ss;
 
 typedef struct s_animation
 {
@@ -30,10 +31,29 @@ typedef struct s_animation
     char *filepath;
     int delayPerFrame;
     int totalFrames;
-
+    
     int direction;
 
 }               t_animation;
+
+typedef struct s_frameanim
+{
+    char *frames_dir;
+    SDL_Renderer *renderer;
+
+    int delayPerFrame;
+    int totalFrames;
+
+}               t_frameanim;
+
+
+typedef struct s_enemy
+{
+    t_animation *tAnimation;
+
+    int hp;
+    int attack;
+}              t_enemy;
 
 /* Enumerations */
 
@@ -65,32 +85,31 @@ typedef enum e_error
 //}            t_anim_state;
 
 /* Prototypes */
-/* Game Parts */
-/* Base Parts*/
-int GameMain();
-void InitializeSDL();
-SDL_Window *CreateWindow();
-SDL_Renderer *CreateRenderer(SDL_Window *window);
+    /* Game Parts */
+        /* Base Parts*/
+            int GameMain();
+            void InitializeSDL();
+            SDL_Window *CreateWindow(int wW, int wH);
+            SDL_Renderer *CreateRenderer(SDL_Window *window);
 
-/* Render Parts */
-SDL_Texture *LoadTexture(const char *filepath, SDL_Renderer *renderer);
-void RenderTextureByInput(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y, int w, int h);
-void RenderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y);
+        /* Render Parts */
+            SDL_Texture *LoadTexture(const char *filepath, SDL_Renderer *renderer);
+            void RenderTextureByInput(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y, int w, int h);
+            void RenderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y);
 //            SDL_Texture *RenderHero(int frame, t_anim_state state, SDL_Renderer *renderer);
 
-/* Map Part */
-TextureMap *Map(SDL_Renderer *renderer, int arr[20][25]);
-void DrawMap(SDL_Renderer *renderer, TextureMap *text);
+        /* Main Hero */
+        void HeroMove(t_direction direction, int x_pos, int y_pos,  SDL_Rect *windowRect);
 
-/* Main Hero */
-void HeroMove(t_direction direction, int x_pos, int y_pos,  SDL_Rect *windowRect);
+        /* levels */
+        int Level0Loop();
+        void Level1Loop(int wW, int wH);
 
-/* Levels */
-int Level0Loop();
-void Level1Loop();
+        /* Animations */
+        SDL_Texture *Animation(t_animation *tAnimation);
+        SDL_Texture *AnimateByFrames(t_frameanim *tFrameanim);
+        t_texture_ss LoadSpriteSheet(SDL_Texture *texture, SDL_Rect textureRect, SDL_Rect frameRect, int frame_count);
 
-/* Animations */
-SDL_Texture *Animation(t_animation *tAnimation);
 
 /* Utils */
 void raise_error(t_error error_id);

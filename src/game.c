@@ -22,7 +22,7 @@ int GameMain()
      */
 
     /* Create Level 0 */
-    Level1Loop();
+    Level0Loop();
 
 
 
