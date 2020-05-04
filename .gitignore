@@ -5,7 +5,6 @@
 *.[oa]
 *~
 *.exe
-/cmake/
 /cmake-build-debug/
 /.vscode/
 /.idea/
