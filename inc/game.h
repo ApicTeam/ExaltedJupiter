@@ -40,10 +40,12 @@ typedef struct Textures
     SDL_Texture *wallInnerCornerTopRight;
     SDL_Texture *wallInnerCornerDownLeft;
     SDL_Texture *wallInnerCornerDownRight;
+    SDL_Texture *floor;
 
-    SDL_Rect  dest, src ;
 
-    int map[20][25];
+  SDL_Rect  dest, src ;
+
+    int map[100][100];
 }                  TextureMap;
 
 typedef struct s_animation
@@ -125,7 +127,7 @@ typedef enum e_error
 //            SDL_Texture *RenderHero(int frame, t_anim_state state, SDL_Renderer *renderer);
 
         /* Map Part */
-        TextureMap Map(SDL_Renderer *renderer, int arr[20][25]);
+        TextureMap Map(SDL_Renderer *renderer, int arr[100][100]);
         void DrawMap(SDL_Renderer *renderer, TextureMap *text);
 
         /* Main Hero */
