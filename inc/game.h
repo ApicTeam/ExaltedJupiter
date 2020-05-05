@@ -8,6 +8,7 @@
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
+#include <math.h>
 
 /* Structures */
 
