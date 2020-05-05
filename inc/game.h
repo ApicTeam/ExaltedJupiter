@@ -25,10 +25,21 @@ typedef struct s_texture_ss
 
 typedef struct Textures
 {
+    SDL_Texture *backGroundCornerRight;
+    SDL_Texture *backGroundCornerLeft;
+    SDL_Texture* backGroundWall;
     SDL_Texture* wallDown;
     SDL_Texture* wallUp;
     SDL_Texture* wallLeft;
     SDL_Texture* wallRight;
+    SDL_Texture *wallOuterCornerTopLeft;
+    SDL_Texture *wallOuterCornerTopRight;
+    SDL_Texture *wallOuterCornerDownLeft;
+    SDL_Texture *wallOuterCornerDownRight;
+    SDL_Texture *wallInnerCornerTopLeft;
+    SDL_Texture *wallInnerCornerTopRight;
+    SDL_Texture *wallInnerCornerDownLeft;
+    SDL_Texture *wallInnerCornerDownRight;
 
     SDL_Rect  dest, src ;
 
@@ -118,11 +129,12 @@ typedef enum e_error
         void DrawMap(SDL_Renderer *renderer, TextureMap *text);
 
         /* Main Hero */
-        void HeroMove(t_direction direction, int x_pos, int y_pos,  SDL_Rect *windowRect);
+        void HeroMove(t_direction direction, int x_vel, int y_vel,  SDL_Rect *windowRect);
 
         /* levels */
         int Level0Loop();
         void Level1Loop(int wW, int wH);
+        void Level2Loop(int wW, int wH);
 
         /* Animations */
         SDL_Texture *Animation(t_animation *tAnimation);
