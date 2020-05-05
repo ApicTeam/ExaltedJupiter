@@ -30,19 +30,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0147c4b8-b1aa-4a07-942e-6a5312f768ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/inc/Structures.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/enemies/animate_enemy.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/enemies/get_distance_to_hero.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/enemies/knight/create_knight.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/enemies/knight/knight_behaviour.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/enemies/knight/knight_render.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt.for_linux" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt.for_linux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt.for_mingw" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt.for_mingw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inc/game.h" beforeDir="false" afterPath="$PROJECT_DIR$/inc/game.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inc/minilib.h" beforeDir="false" afterPath="$PROJECT_DIR$/inc/minilib.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hero/animation/animation.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/hero/animation/animation.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/levels/test_lvl.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/test_lvl.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +90,7 @@
       <workItem from="1588545901594" duration="1915000" />
       <workItem from="1588573355048" duration="599000" />
       <workItem from="1588681256712" duration="708000" />
-      <workItem from="1588682013431" duration="27460000" />
+      <workItem from="1588682013431" duration="27580000" />
     </task>
     <servers />
   </component>
@@ -134,26 +123,26 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1588594320107" />
-    <state width="1807" height="270" key="GridCell.Tab.0.bottom" timestamp="1588711085986">
+    <state width="1807" height="270" key="GridCell.Tab.0.bottom" timestamp="1588711426859">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588546402185" />
-    <state width="1807" height="270" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588711085986" />
-    <state width="1807" height="270" key="GridCell.Tab.0.center" timestamp="1588711085984">
+    <state width="1807" height="270" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588711426859" />
+    <state width="1807" height="270" key="GridCell.Tab.0.center" timestamp="1588711426857">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588546402185" />
-    <state width="1807" height="270" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588711085984" />
-    <state width="1807" height="270" key="GridCell.Tab.0.left" timestamp="1588711085983">
+    <state width="1807" height="270" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588711426857" />
+    <state width="1807" height="270" key="GridCell.Tab.0.left" timestamp="1588711426856">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588546402185" />
-    <state width="1807" height="270" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588711085983" />
-    <state width="1807" height="270" key="GridCell.Tab.0.right" timestamp="1588711085985">
+    <state width="1807" height="270" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588711426856" />
+    <state width="1807" height="270" key="GridCell.Tab.0.right" timestamp="1588711426858">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588546402185" />
-    <state width="1807" height="270" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588711085985" />
+    <state width="1807" height="270" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588711426858" />
     <state width="1877" height="298" key="GridCell.Tab.1.bottom" timestamp="1588546402186">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
