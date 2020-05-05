@@ -1,5 +1,4 @@
 #include "game.h"
-#include "minilib.h"
 #include "maps.h"
 
 SDL_Renderer *renderer = NULL;
@@ -25,14 +24,11 @@ int lvl1[20][25] = {
     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-
 };
 
 
 void Level2Loop(int wW, int wH)
 {
-
-
   /* Music */
   Mix_Chunk *stepSound = Mix_LoadWAV("../resource/music/hero_sound/steps.mp3");
   if (!stepSound)
@@ -72,15 +68,9 @@ void Level2Loop(int wW, int wH)
       };
 
   /*KNIGHT TEST*/
-  SDL_Rect windowKnightRect = {.x = 0,.y = 0, .w = 0, .h = 0};
-  SDL_Rect textureKnightRect = {.x = 0, .y = 0, .w = 0, .h = 0};
-  SDL_Texture *HostileKnightT;
-  t_animation HostileKnightA =
-          {
-            .windowsRect = &windowKnightRect, .textureRect = &textureKnightRect,
-            .renderer = renderer, .filepath = "../resource/characters/enemy_knight/idle/Knight_f_idle_spritesheet.png.png",
-            .delayPerFrame = 255, .totalFrames = 4
-          };
+  t_enemy knights[3];
+  for(int i = 0, j = 2; i < 3; i++, j++)
+      create_knight(renderer, &knights[i], 30, j * 64);
 /**/
 
   int scene_counter = 0;
@@ -256,34 +246,13 @@ void Level2Loop(int wW, int wH)
         Mix_PlayChannel(0, stepSound, 0);
     }
 
+//    knight.HostileT = Animation()
 //KNIGHT BEHAVIOUR
-    if(sqrt(pow(CurrentHeroA.windowsRect->x - HostileKnightA.windowsRect->x, 2) + pow(CurrentHeroA.windowsRect->y - HostileKnightA.windowsRect->y, 2)) < 800){
-        HostileKnightA.filepath = "../resource/characters/enemy_knight/run/Knight_f_run_spritesheet.png";
-        HostileKnightA.totalFrames = 4;
-        HostileKnightA.delayPerFrame = 125;
-        if (CurrentHeroA.windowsRect->x - HostileKnightA.windowsRect->x != 0 || CurrentHeroA.windowsRect->y - HostileKnightA.windowsRect->y != 0) {
-            double knight_x_vel = 240 * ((CurrentHeroA.windowsRect->x - HostileKnightA.windowsRect->x) /
-                                         sqrt(pow(CurrentHeroA.windowsRect->x - HostileKnightA.windowsRect->x, 2) +
-                                              pow(CurrentHeroA.windowsRect->y - HostileKnightA.windowsRect->y, 2)));
-            SDL_Log("x: %f\n", knight_x_vel);
-            double knight_y_vel = 240 * ((CurrentHeroA.windowsRect->y - HostileKnightA.windowsRect->y) /
-                                         sqrt(pow(CurrentHeroA.windowsRect->x - HostileKnightA.windowsRect->x, 2) +
-                                              pow(CurrentHeroA.windowsRect->y - HostileKnightA.windowsRect->y, 2)));
-            SDL_Log("y: %f\n", knight_y_vel);
-            HeroMove(0, knight_x_vel, knight_y_vel, &windowKnightRect);
-        }
-    }
-    else{
-        HostileKnightA.filepath = "../resource/characters/enemy_knight/idle/Knight_f_idle_spritesheet.png";
-        HostileKnightA.totalFrames = 4;
-        HostileKnightA.delayPerFrame = 150;
-    }
-    HostileKnightT = Animation(&HostileKnightA);
-    HostileKnightA.windowsRect->w = 80;
-    HostileKnightA.windowsRect->h = 110;
+    for(int i = 0; i < 3; i++)
+        knight_behaviour(CurrentHeroA, &knights[i], text, renderer);
     //END
 
-    CurrentHeroT = Animation(&CurrentHeroA);
+      CurrentHeroT = Animation(&CurrentHeroA);
 
     camera.x = windowRect.x - 800;
     camera.y = windowRect.y - 400;
@@ -292,7 +261,6 @@ void Level2Loop(int wW, int wH)
        || text.map[(windowRect.y + windowRect.h/3)/64][(windowRect.x + windowRect.w/2)/64] > 0
        || text.map[(windowRect.y + windowRect.h*2/3)/64][(windowRect.x + windowRect.w/2)/64] > 0
        || text.map[(windowRect.y + windowRect.h/2)/64][(windowRect.x + windowRect.w*2/3)/64] >0)
-
     {
       HeroMove(dir, -x_vel, -y_vel, &windowRect);
     }
@@ -308,9 +276,9 @@ void Level2Loop(int wW, int wH)
       SDL_RenderCopy(renderer, CurrentHeroT, &textureRect, &windowRect);
     else
       SDL_RenderCopyEx(renderer, CurrentHeroT, &textureRect, &windowRect, 360, NULL, SDL_FLIP_HORIZONTAL);
-
 //    KNIGHT RENDER
-      SDL_RenderCopy(renderer, HostileKnightT, &textureKnightRect, &windowKnightRect);
+      for(int i = 0; i < 3; i++)
+          knight_render(renderer, &knights[i], false);
 
     SDL_Delay(1000/60);
     SDL_RenderPresent(renderer);

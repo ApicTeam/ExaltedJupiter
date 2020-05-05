@@ -1,22 +1,18 @@
 #include "game.h"
-#include "minilib.h"
 
 SDL_Texture *Animation(t_animation *tAnimation)//SDL_Rect *windowRect, SDL_Rect *textureRect, SDL_Renderer *renderer,
                          //  char *filepath, int delayPerFrame, int totalFrames)
 {
     /* Textures */
     SDL_Texture *HeroIdle = LoadTexture(tAnimation->filepath, tAnimation->renderer);
-
     /* Base Variables */
     int frame = (SDL_GetTicks() / tAnimation->delayPerFrame) % tAnimation->totalFrames;
     int velocity = 0;
     int x_pos = tAnimation->windowsRect->x;
     /* Main Logic */
-
     /* Initialize Structures */
     if (tAnimation->textureRect -> w == 0 || tAnimation->windowsRect -> w == 0)
     {
-
         tAnimation->windowsRect -> x = 300;
         tAnimation->windowsRect -> y = 250;
         tAnimation->windowsRect -> w = 150;
@@ -37,6 +33,5 @@ SDL_Texture *Animation(t_animation *tAnimation)//SDL_Rect *windowRect, SDL_Rect 
 //    if (tAnimation->direction == RIGHT) velocity = -300;
 //    x_pos += velocity / 60;
 //    tAnimation->windowsRect->x = x_pos;
-
     return HeroIdle;
 }
