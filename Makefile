@@ -9,7 +9,7 @@ HDRS = inc/game.h \
 	inc/Structures.h 
 
 SRC = main.c \
-	create_lvl.h \
+	create_lvl.c \
 	game.c \
 	sdl_initialization.c \
 	error_handler.c \
@@ -36,7 +36,7 @@ SRC = main.c \
 	hero_collision_detect.c
 
 SRCS = src/main.c \
-	src/levels/main_menu/create_lvl.h \
+	src/levels/main_menu/create_lvl.c \
 	src/game.c \
 	src/sdl_configs/sdl_initialization.c \
 	src/utils/error_handler.c \
