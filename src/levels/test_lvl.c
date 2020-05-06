@@ -145,14 +145,7 @@ void Level2Loop(int wW, int wH)
   int delayPerFrame = 157.835782842584534950903505000099999990999090905949;
   int anim = false;
 
-  /*SDL_Texture *hero.HeroT;
-  t_animation hero.HeroA =
-      {
-          .windowsRect = &windowRect, .textureRect = &textureRect,
-          .renderer = renderer, .filepath = "../resource/characters/main_hero/idle/hero_idle.png",
-          .delayPerFrame = 255, .totalFrames = 3
-      };*/
-
+  /*HERO CREATION*/
   t_mainHero hero;
   create_hero(renderer, &hero, 400, 350);
 
@@ -166,9 +159,6 @@ void Level2Loop(int wW, int wH)
   int right = 0;
   int up = 0;
   int down = 0;
-
-  /*int hero.velX = 0;
-  int hero.velY = 0;*/
 
   int dir = 0;
 
@@ -336,7 +326,7 @@ void Level2Loop(int wW, int wH)
 
 //KNIGHT BEHAVIOUR
     for(int i = 0; i < 3; i++)
-        knight_behaviour(&hero.HeroA, &knights[i], text, renderer);
+        knight_behaviour(&hero, &knights[i], text, renderer);
     //END
       hero.HeroT = Animation(&hero.HeroA);
 
@@ -360,7 +350,7 @@ void Level2Loop(int wW, int wH)
 
     SDL_Delay(1000/60);
     SDL_RenderPresent(renderer);
-    SDL_Log("Scene: %d\n\n", scene_counter++);
+//    SDL_Log("Scene: %d\n\n", scene_counter++);
 
   }
 }
