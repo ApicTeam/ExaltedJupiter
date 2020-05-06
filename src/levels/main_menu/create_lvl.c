@@ -124,7 +124,7 @@ int Level0Loop()
     if (next)
     {
         Mix_FreeMusic(bgMusic);
-        Level2Loop(1600, 800);
+//        Level2Loop(1600, 800);
     }
     IMG_Quit();
     SDL_Quit();

@@ -2,7 +2,7 @@
 #include "minilib.h"
 
 void CreateApp(t_app app);
-void moveHero(t_mainHero *hero, t_app *app);
+void moveHero(t_mainHero *hero, TextureMap text);
 void handleEvent(t_app *app, t_mainHero *hero);
 int GetTexW(SDL_Texture *texture);
 int GetTexH(SDL_Texture *texture);
@@ -123,7 +123,8 @@ void StartTemplate(t_app *app)
   /* Initialize Textures */ // TODO Try to wrap it
   t_baseTexture bg =
       {
-          .texture = LoadTexture(GeneratePath(app->resourceDir, "/background/map_01.png"), app->renderer),
+          .texture = LoadTexture(GeneratePath(app->resourceDir, "/background/Map_1600*1600.png"), app->renderer),
+          .sizeRect = {.x = 0, .y = 0, .w = 6400, .h = 6400}
       };
 
 
@@ -133,43 +134,21 @@ void StartTemplate(t_app *app)
           .totalFrames = 3,
           .delayPerFrame = 189,
           .frameRect = {.x = 0, .y = 0, .w = GetTexW(Hero.texture) / Hero.totalFrames, .h = GetTexH(Hero.texture)},
-          .sizeRect = {.x = 0, .y = 0, .w = 192, .h = 192},
-
+          .sizeRect = {.x = 400, .y = 350, .w = 192, .h = 192},
       };
 
-  /* Temp Data */
-
-//  int FPS = 60;
-//  int frameTime = 0;
-//
-//  SDL_Rect playerRect;
-//  SDL_Rect playerPosition;
-//
-//  playerPosition.x = playerPosition.y = 0;
-//  playerPosition.w = playerPosition.h = 128;
-//
-//  int frameWidth, frameHeight;
-//  int textureWidth, textureHeight;
-//
-//  SDL_QueryTexture(Hero.texture, NULL, NULL, &textureWidth, &textureHeight);
-//
-//  frameWidth = textureWidth / 6;
-//  frameHeight = textureHeight;
-//
-//  playerRect.x = playerRect.y = 0;
-//  playerRect.w = frameWidth;
-//  playerRect.h = frameHeight;
-
+  t_mainHero hero;
+  create_hero(app->renderer, &hero, Hero);
 
   /* Create ViewRect */
   app->View.x = 0;
   app->View.y = 0;
-  app->View.w = app->CameraWidth / 1.5;
-  app->View.h = app->CameraHeight / 1.5;
+  app->View.w = app->CameraWidth;// / 1.175;
+  app->View.h = app->CameraHeight;// / 1.175;
 
 
   /* Create Hero */
-  t_mainHero hero = {.gameData = Hero, .health = 100, .name = "Hero", .base_damage = 10, .velX = 0, .velY = 0};
+//  t_mainHero hero = {.gameData = Hero, .health = 100, .name = "Hero", .base_damage = 10, .velX = 0, .velY = 0};
 
 
   while (!app->quit)
@@ -178,7 +157,6 @@ void StartTemplate(t_app *app)
     {
       if (app->event.type == SDL_QUIT)
         app->quit = true;
-
       else
         handleEvent(app, &hero);
     }
@@ -186,10 +164,10 @@ void StartTemplate(t_app *app)
     SDL_SetRenderDrawColor(app->renderer, 0x00, 0x00, 0x00, 0xFF);
     SDL_RenderClear(app->renderer);
 
-//    moveHero(&hero, app);
-
     app->View.x = (hero.gameData.sizeRect.x + hero.gameData.sizeRect.w / 2) - app->CameraWidth / 2;
     app->View.y = (hero.gameData.sizeRect.y + hero.gameData.sizeRect.h / 2) - app->CameraHeight / 2;
+    app->View.w = 6400;
+    app->View.h = 6400;
 
     if (app->View.x < 0)
       app->View.x = 0;
@@ -203,8 +181,12 @@ void StartTemplate(t_app *app)
     if (app->View.y > app->LevelHeight - app->View.h)
        app->View.y = app->LevelHeight - app->View.h;
 
-    moveHero(&hero, app);
+    moveHero(&hero, text);//app);
     animateSprite(&hero.gameData);
+    if(hero_collision_detect(text, hero)) {
+         hero.gameData.sizeRect.x -= hero.velX;
+         hero.gameData.sizeRect.y -= hero.velY;
+    }
 
     SDL_RenderCopyEx(app->renderer, bg.texture, &app->View, NULL, 0, 0, SDL_FLIP_NONE);
 
@@ -225,18 +207,16 @@ void StartTemplate(t_app *app)
 
 }
 
-void moveHero(t_mainHero *hero, t_app *app)
+void moveHero(t_mainHero *hero, TextureMap text)//t_app *app)
 {
-  hero->gameData.sizeRect.x += hero->velX;
+    hero->gameData.sizeRect.x += hero->velX;
+    hero->gameData.sizeRect.y += hero->velY;
 
-  if ((hero->gameData.sizeRect.x < -32) || hero->gameData.sizeRect.x + hero->gameData.sizeRect.w > app->LevelWidth)
-    hero->gameData.sizeRect.x -= hero->velX;
 
-  hero->gameData.sizeRect.y += hero->velY;
-
-  if((hero->gameData.sizeRect.y < -32) || (hero->gameData.sizeRect.y + hero->gameData.sizeRect.h > app->LevelHeight))
-    hero->gameData.sizeRect.y -= hero->velY;
-
+  /*if ((hero->gameData.sizeRect.x < -32) || hero->gameData.sizeRect.x + hero->gameData.sizeRect.w > app->LevelWidth)
+    hero->gameData.sizeRect.x -= hero->velX;*/
+  /*if((hero->gameData.sizeRect.y < -32) || (hero->gameData.sizeRect.y + hero->gameData.sizeRect.h > app->LevelHeight))
+    hero->gameData.sizeRect.y -= hero->velY;*/
 }
 
 void animateSprite(t_baseTexture *sprite)

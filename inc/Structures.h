@@ -114,10 +114,10 @@ typedef struct s_baseTexture
 
 typedef struct s_mainHero
 {
-    SDL_Rect windowRect;
+    /*SDL_Rect windowRect;
     SDL_Rect textureRect;
     SDL_Texture *HeroT;
-    t_animation HeroA;
+    t_animation HeroA;*/
     int health;
     int base_damage;
     int xp;

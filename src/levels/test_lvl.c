@@ -1,3 +1,4 @@
+/*
 #include "game.h"
 #include "maps.h"
 
@@ -109,24 +110,32 @@ SDL_Renderer *renderer = NULL;
 
 void Level2Loop(int wW, int wH)
 {
-  /* Music */
+  */
+/* Music *//*
+
   Mix_Chunk *stepSound = Mix_LoadWAV("../resource/music/hero_sound/steps.mp3");
   if (!stepSound)
     SDL_Log("%s", Mix_GetError());
 
 
   SDL_Rect camera = {0, 0, 1600, 800};
-  /* Base Variables */
+  */
+/* Base Variables *//*
+
   SDL_Window *window = CreateWindow(1600, 800);
   renderer = CreateRenderer(window);
 
   SDL_Event event;
   bool quit = false;
 
-  /* Textures */
+  */
+/* Textures *//*
+
   SDL_Texture *Background = LoadTexture("../resource/background/background_1.png", renderer);
   TextureMap text = Map(renderer, lvl2);
-  /* Make Rectangles */
+  */
+/* Make Rectangles *//*
+
 
   //'windowRect' defines the dimensions of the rendering sprite on window
   SDL_Rect windowRect = {.x = 0,.y = 0, .w = 0, .h = 0};
@@ -138,15 +147,21 @@ void Level2Loop(int wW, int wH)
   int delayPerFrame = 157.835782842584534950903505000099999990999090905949;
   int anim = false;
 
-  /*HERO CREATION*/
+  */
+/*HERO CREATION*//*
+
   t_mainHero hero;
   create_hero(renderer, &hero, 400, 350);
 
-  /*KNIGHT TEST*/
+  */
+/*KNIGHT TEST*//*
+
   t_enemy knights[3];
   for(int i = 0, j = 4; i < 3; i++, j++)
       create_knight(renderer, &knights[i], 5 * 64, j * 64);
-/**/
+*/
+/**//*
+
   int scene_counter = 0;
   int left = 0;
   int right = 0;
@@ -346,4 +361,4 @@ void Level2Loop(int wW, int wH)
 //    SDL_Log("Scene: %d\n\n", scene_counter++);
 
   }
-}
+}*/

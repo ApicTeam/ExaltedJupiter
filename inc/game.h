@@ -35,7 +35,7 @@ void RenderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y);
 
         /* Main Hero */
         void HeroMove(t_direction direction, float x_vel, float y_vel,  SDL_Rect *windowRect);
-        void create_hero(SDL_Renderer *, t_mainHero *, int, int);
+        void create_hero(SDL_Renderer *, t_mainHero *, t_baseTexture);
         void hero_render(SDL_Renderer *, t_mainHero *, bool);
         bool hero_collision_detect(TextureMap, t_mainHero);
 
@@ -43,7 +43,7 @@ void RenderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y);
         bool isBackground(int);
         int Level0Loop();
         void Level1Loop(int wW, int wH);
-        void Level2Loop(int wW, int wH);
+//        void Level2Loop(int wW, int wH);
         void StartTemplate(t_app *app);
 
 /* Animations */
@@ -53,14 +53,14 @@ t_texture_ss LoadSpriteSheet(SDL_Texture *texture, SDL_Rect textureRect, SDL_Rec
 
         /*Enemies*/
         void enemy_do_damage(t_mainHero *, t_enemy);
-        double get_normalized_x(t_animation, t_enemy *);
-        double get_normalized_y(t_animation, t_enemy *);
-        double get_distance_to_hero(t_animation, t_enemy);
+        double get_normalized_x(t_baseTexture, t_enemy *);
+        double get_normalized_y(t_baseTexture, t_enemy *);
+        double get_distance_to_hero(t_baseTexture, t_enemy);
         SDL_Texture *animate_enemy(t_animation *);
         void create_knight(SDL_Renderer *, t_enemy *, int, int);
         void knight_behaviour(t_mainHero *, t_enemy *, TextureMap, SDL_Renderer *);
         void knight_render(SDL_Renderer *, t_enemy *, bool);
-        bool knight_collision_detect(TextureMap text, t_animation, t_enemy *knight);
+        bool knight_collision_detect(TextureMap, t_baseTexture, t_enemy *);
 
 /* Utils */
 void raise_error(t_error error_id);
