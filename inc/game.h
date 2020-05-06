@@ -44,6 +44,7 @@ void RenderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y);
         int Level0Loop();
         void Level1Loop(int wW, int wH);
         void Level2Loop(int wW, int wH);
+        void StartTemplate(t_app *app);
 
 /* Animations */
 SDL_Texture *Animation(t_animation *tAnimation);
