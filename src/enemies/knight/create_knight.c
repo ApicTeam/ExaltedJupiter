@@ -20,8 +20,10 @@ void create_knight(SDL_Renderer *renderer, t_enemy *knight, int x_coord, int y_c
         knight->HostileA.delayPerFrame = 255;
         knight->HostileA.totalFrames = 4;
 
-        knight->speed = 240;
+        knight->speed = (x_coord + y_coord) / 5;
         knight->health = 100;
         knight->base_damage = 10;
+
+        knight->alive = true;
 }
 

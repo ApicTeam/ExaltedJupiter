@@ -1,30 +1,15 @@
 #ifndef EXALTEDJUPITER_DEV_STRUCTURES_H
 #define EXALTEDJUPITER_DEV_STRUCTURES_H
 
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_events.h"
+#include "SDL_image.h"
+#include "SDL2/SDL_timer.h"
+#include "SDL_mixer.h"
+#include "SDL_ttf.h"
+#include <stdbool.h>
+
 /* Structures */
-
-typedef struct s_app
-{
-  SDL_Window *window;
-
-  int LevelWidth;
-  int LevelHeight;
-
-  int CameraWidth;
-  int CameraHeight;
-
-  SDL_Rect View;
-
-  SDL_Renderer *renderer;
-
-  SDL_Event event;
-
-  char *resourceDir;
-
-  bool quit;
-
-
-}              t_app;
 
 typedef struct s_texture_ss
 {
@@ -59,7 +44,7 @@ typedef struct Textures
 
     SDL_Rect  dest, src ;
 
-    int map[100][100];
+    int map[16][30];
 }                  TextureMap;
 
 typedef struct s_animation
@@ -96,6 +81,8 @@ typedef struct s_enemy
     int speed;
     int health;
     int base_damage;
+
+    bool alive;
 }              t_enemy;
 
 typedef struct s_baseTexture
@@ -125,9 +112,9 @@ typedef struct s_mainHero
     int velX;
     int velY;
     unsigned int invulnerability_timer;
-    bool alive;
     bool invulnerability;
-    t_baseTexture gameData;
+    bool alive;
+    //t_baseTexture gameData;
 }              t_mainHero;
 
 /* Enumerations */

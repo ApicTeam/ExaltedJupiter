@@ -7,11 +7,11 @@ void knight_behaviour(t_mainHero *main_hero, t_enemy *knight, TextureMap text, S
         knight->HostileA.delayPerFrame = 125;
         knight->HostileA.renderer = renderer;
         if (main_hero->HeroA.windowsRect->x - knight->windowRect.x != 0 || main_hero->HeroA.windowsRect->y - knight->windowRect.y != 0) {
-            SDL_Log("move");
+            // SDL_Log("move");
             double knight_x_vel = knight->speed * get_normalized_x(main_hero->HeroA, knight);
             double knight_y_vel = knight->speed * get_normalized_y(main_hero->HeroA, knight);
             if(!knight_collision_detect(text, main_hero->HeroA, knight))
-                HeroMove(0, knight_x_vel, knight_y_vel, &knight->windowRect);
+                HeroMove(knight_x_vel, knight_y_vel, &knight->windowRect);
             if(main_hero->HeroA.windowsRect->x - knight->windowRect.x < 10 || main_hero->HeroA.windowsRect->y - knight->windowRect.y < 10){
                 if(!main_hero->invulnerability)
                     enemy_do_damage(main_hero, *(knight));

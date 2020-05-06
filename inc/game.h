@@ -30,11 +30,11 @@ void RenderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y);
 //            SDL_Texture *RenderHero(int frame, t_anim_state state, SDL_Renderer *renderer);
 
         /* Map Part */
-        TextureMap Map(SDL_Renderer *renderer, int arr[100][100]);
+        TextureMap Map(SDL_Renderer *renderer, int arr[16][30]);
         void DrawMap(SDL_Renderer *renderer, TextureMap *text);
 
         /* Main Hero */
-        void HeroMove(t_direction direction, float x_vel, float y_vel,  SDL_Rect *windowRect);
+        void HeroMove(float x_vel, float y_vel,  SDL_Rect *windowRect);
         void create_hero(SDL_Renderer *, t_mainHero *, int, int);
         void hero_render(SDL_Renderer *, t_mainHero *, bool);
         bool hero_collision_detect(TextureMap, t_mainHero);
@@ -44,7 +44,6 @@ void RenderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y);
         int Level0Loop();
         void Level1Loop(int wW, int wH);
         void Level2Loop(int wW, int wH);
-        void StartTemplate(t_app *app);
 
 /* Animations */
 SDL_Texture *Animation(t_animation *tAnimation);
