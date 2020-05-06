@@ -3,6 +3,29 @@
 
 /* Structures */
 
+typedef struct s_app
+{
+  SDL_Window *window;
+
+  int LevelWidth;
+  int LevelHeight;
+
+  int CameraWidth;
+  int CameraHeight;
+
+  SDL_Rect View;
+
+  SDL_Renderer *renderer;
+
+  SDL_Event event;
+
+  char *resourceDir;
+
+  bool quit;
+
+
+}              t_app;
+
 typedef struct s_texture_ss
 {
     SDL_Texture *texture;
@@ -101,8 +124,10 @@ typedef struct s_mainHero
     char *name;
     int velX;
     int velY;
-
-    //t_baseTexture gameData;
+    unsigned int invulnerability_timer;
+    bool alive;
+    bool invulnerability;
+    t_baseTexture gameData;
 }              t_mainHero;
 
 /* Enumerations */
