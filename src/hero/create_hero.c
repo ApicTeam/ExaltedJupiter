@@ -24,8 +24,8 @@ void create_hero(SDL_Renderer *renderer, t_mainHero *hero, int x_coord, int y_co
 
     hero->velX = 0;
     hero->velY = 0;
-    hero->health = 100;
-    hero->base_damage = 10;
+    hero->health = 125;
+    hero->base_damage = 25;
     hero->invulnerability_timer = 0;
     hero->invulnerability = false;
     hero->alive = true;
