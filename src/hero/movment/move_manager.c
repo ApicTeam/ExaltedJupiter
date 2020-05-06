@@ -1,7 +1,7 @@
 #include "game.h"
 #include "minilib.h"
 
-void HeroMove(t_direction direction, int x_vel, int y_vel,  SDL_Rect *windowRect)
+void HeroMove(t_direction direction, float x_vel, float y_vel,  SDL_Rect *windowRect)
 {
     /* Variable Definitions */
 //    int x_vel = 0;
