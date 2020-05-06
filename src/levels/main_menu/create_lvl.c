@@ -1,6 +1,6 @@
 #include "game.h"
 #include "minilib.h"
-#include "main_menu/mm_lib.h"
+// #include "main_menu/mm_lib.h"
 
 typedef struct s_level
 {
@@ -124,7 +124,7 @@ int Level0Loop()
     if (next)
     {
         Mix_FreeMusic(bgMusic);
-        Level2Loop(1600, 800);
+        Level2Loop(1920, 1080);
     }
     IMG_Quit();
     SDL_Quit();

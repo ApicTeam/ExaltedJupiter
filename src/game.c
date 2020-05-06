@@ -19,7 +19,7 @@ int GameMain()
      */
 
     /* Create Level 0 */
-    Level2Loop(1920, 1080);
+    Level0Loop(1920, 1080);
 
 
     Mix_Quit();

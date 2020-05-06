@@ -340,6 +340,8 @@ void Level2Loop()
 
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
+  IMG_Quit();
+  Mix_Quit();
   SDL_Quit();
 
 }
