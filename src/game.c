@@ -1,6 +1,5 @@
 #include "game.h"
 #include "minilib.h"
-#include "test/test.h"
 
 /**
  * TODO Main
@@ -20,7 +19,7 @@ int GameMain()
      */
 
     /* Create Level 0 */
-
+    // Level2Loop(1600, 800);
     /* Temp Data */
     t_app app = {.window = CreateWindow(1920, 1080), .renderer = CreateRenderer(app.window), .LevelWidth = 6400, .LevelHeight = 6400,
         .quit = false, .resourceDir = "../resource", .CameraWidth = 1920, .CameraHeight = 1080};

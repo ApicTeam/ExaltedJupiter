@@ -1,6 +1,5 @@
 #include "game.h"
 #include "minilib.h"
-#include "test/test.h"
 
 void CreateApp(t_app app);
 void moveHero(t_mainHero *hero, t_app *app);
@@ -134,7 +133,7 @@ void StartTemplate(t_app *app)
           .totalFrames = 3,
           .delayPerFrame = 189,
           .frameRect = {.x = 0, .y = 0, .w = GetTexW(Hero.texture) / Hero.totalFrames, .h = GetTexH(Hero.texture)},
-          .sizeRect = {.x = 0, .y = 0, .w = 128, .h = 128},
+          .sizeRect = {.x = 0, .y = 0, .w = 192, .h = 192},
 
       };
 
@@ -170,7 +169,7 @@ void StartTemplate(t_app *app)
 
 
   /* Create Hero */
-  t_mainHero hero = {.gameData = Hero, .hp = 100, .name = "Hero", .damage = 10, .velX = 0, .velY = 0};
+  t_mainHero hero = {.gameData = Hero, .health = 100, .name = "Hero", .base_damage = 10, .velX = 0, .velY = 0};
 
 
   while (!app->quit)
@@ -212,7 +211,11 @@ void StartTemplate(t_app *app)
     hero.gameData.sizeRect.x -= app->View.x;
     hero.gameData.sizeRect.y -= app->View.y;
 
-    SDL_RenderCopyEx(app->renderer, hero.gameData.texture, &hero.gameData.frameRect, &hR, 0, 0, SDL_FLIP_NONE);
+    SDL_RenderCopyEx(app->renderer, hero.gameData.texture, &hero.gameData.frameRect,
+                     &hero.gameData.sizeRect, 0, 0, SDL_FLIP_NONE);
+
+    hero.gameData.sizeRect.x += app->View.x;
+    hero.gameData.sizeRect.y += app->View.y;
 
     SDL_RenderPresent(app->renderer);
 
