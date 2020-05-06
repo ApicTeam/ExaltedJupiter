@@ -123,7 +123,7 @@ void StartTemplate(t_app *app)
   /* Initialize Textures */ // TODO Try to wrap it
   t_baseTexture bg =
       {
-          .texture = LoadTexture(GeneratePath(app->resourceDir, "/background/Map_1600*1600.png"), app->renderer),
+          .texture = LoadTexture(GeneratePath(app->resourceDir, "/background/Map_1600x1600.png"), app->renderer),
           .sizeRect = {.x = 0, .y = 0, .w = 6400, .h = 6400}
       };
 
