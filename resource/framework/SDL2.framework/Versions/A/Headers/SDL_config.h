@@ -23,6 +23,7 @@
 #define SDL_config_h_
 
 #include "SDL_platform.h"
+#include <stdint.h>
 
 /**
  *  \file SDL_config.h

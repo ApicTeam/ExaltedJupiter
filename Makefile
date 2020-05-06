@@ -1,37 +1,88 @@
 NAME = endgame
 
-INC = inc/minilib.h
-	
-HDR = minilib.h
+INC = game.h \
+	minilib.h \
+	Structures.h 
 
-SRC = src/main.c \
-	src/allerror.c \
-	src/create_window.c \
-	src/render_res.c \
+HDRS = inc/game.h \
+	inc/minilib.h \
+	inc/Structures.h 
 
-SRCS = main.c \
-	allerror.c \
-	create_window.c \
-	render_res.c \
+SRC = main.c \
+	game.c \
+	sdl_initialization.c \
+	error_handler.c \
+	sdl_base.c \
+	sdl_utils.c \
+	garbage_collector.c \
+	move_manager.c \
+	animation.c \
+	utils.c \
+	Map.c \
+	test_lvl.c \
+	create_knight.c \
+	knight_behaviour.c \
+	get_distance_to_hero.c \
+	knight_render.c \
+	enemy_do_damage.c \
+	animate_enemy.c \
+	isBackground.c \
+	knight_collision_detect.c \
+	get_normalized_x.c \
+	get_normalized_y.c \
+	create_hero.c \
+	hero_render.c \
+	hero_collision_detect.c
 
-SDLF =  -I ./framework/SDL2.framework/Versions/A/Headers -F ./framework -framework SDL2 -rpath ./framework -I ./framework/SDL2_image.framework/Versions/A/Headers -F ./framework -framework SDL2_image -rpath ./framework 
+SRCS = src/main.c \
+	src/game.c \
+	src/sdl_configs/sdl_initialization.c \
+	src/utils/error_handler.c \
+	src/sdl_configs/sdl_base.c \
+	src/sdl_configs/sdl_utils.c \
+	src/utils/garbage_collector.c \
+	src/hero/movment/move_manager.c \
+	src/hero/animation/animation.c \
+	src/utils/utils.c \
+	src/levels/Map/Map.c \
+	src/levels/test_lvl.c \
+	src/enemies/knight/create_knight.c \
+	src/enemies/knight/knight_behaviour.c \
+	src/enemies/get_distance_to_hero.c \
+	src/enemies/knight/knight_render.c \
+	src/enemies/enemy_do_damage.c \
+	src/enemies/animate_enemy.c \
+	src/levels/isBackground.c \
+	src/enemies/knight/knight_collision_detect.c \
+	src/enemies/get_normalized_x.c \
+	src/enemies/get_normalized_y.c \
+	src/hero/create_hero.c \
+	src/hero/hero_render.c \
+	src/hero/hero_collision_detect.c
+
+SDLF =  -I ./resources/framework/SDL2.framework/Versions/A/Headers -F ./resource/framework -framework SDL2 -rpath ../resource/framework 
+
+SDLI =  -I ./resource/framework/SDL2_image.framework/Versions/A/Headers -F ./resource/framework -framework SDL2_image -rpath ../framework 
 
 CFLAG = -std=c11 -Wall -Wextra -Wpedantic -Werror
 
-SDLM = -I ./framework/SDL2_mixer.framework/Versions/A/Headers -F ./framework -framework SDL2_mixer -rpath ./framework
+SDLM = -I ./resource/framework/SDL2_mixer.framework/Versions/A/Headers -F ./resource/framework -framework SDL2_mixer -rpath ../resource/framework 
 
-SDLT = -I ./framework/SDL2_ttf.framework/Versions/A/Headers -F ./framework -framework SDL2_ttf -rpath ./framework
+SDLT = -I ./resource/framework/SDL2_ttf.framework/Versions/A/Headers -F ./resource/framework -framework SDL2_ttf -rpath ../resource/framework 
 
-all: install clean
-install:
-	@cp $(SRC) .
-	@cp $(INC) .
-	@clang $(CFLAG) $(SDLM) $(SRCS) $(SDLF) $(SDLT) -o $(NAME) -I $(HDR) 
+all: install 
+install: 
+	@mkdir build
+	@cp $(SRCS) .
+	@cp $(HDRS) .
+	@clang $(CFLAG) $(SDLF) $(SDLI) $(SDLM) $(SDLT) $(SRC) -o ./build/$(NAME)
+	@rm -rf $(INC)
+	@rm -rf $(SRC)
+	@rm -rf ./*.gch
 uninstall:
-	@rm -rf $(SRCS)
-	@rm -rf $(HDR)
-	@rm -rf $(NAME)
+	@rm -rf ./build
 clean:
-	@rm -rf $(SRCS)
-	@rm -rf $(HDR)
+	@rm -rf $(INC)
+	@rm -rf $(SRC)
+	@rm -rf ./*.gch
 reinstall: uninstall all

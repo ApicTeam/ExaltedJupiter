@@ -3,5 +3,5 @@
 
 t_enemy **GenerateEnemy()
 {
-
+    return 0;
 }

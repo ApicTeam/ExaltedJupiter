@@ -29,6 +29,7 @@
 #define SDL_stdinc_h_
 
 #include "SDL_config.h"
+#include <stddef.h>
 
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>

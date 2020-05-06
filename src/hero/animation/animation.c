@@ -7,8 +7,8 @@ SDL_Texture *Animation(t_animation *tAnimation)//SDL_Rect *windowRect, SDL_Rect 
     SDL_Texture *HeroIdle = LoadTexture(tAnimation->filepath, tAnimation->renderer);
     /* Base Variables */
     int frame = (SDL_GetTicks() / tAnimation->delayPerFrame) % tAnimation->totalFrames;
-    int velocity = 0;
-    int x_pos = tAnimation->windowsRect->x;
+    // int velocity = 0;
+    // int x_pos = tAnimation->windowsRect->x;
     /* Main Logic */
     /* Initialize Structures */
     if (tAnimation->textureRect -> w == 0 || tAnimation->windowsRect -> w == 0)

@@ -2,7 +2,7 @@
 
 
 
-TextureMap Map(SDL_Renderer *renderer, int arr[100][100])
+TextureMap Map(SDL_Renderer *renderer, int arr[16][30])
 {
     TextureMap text;
     text.backGroundCornerRight = LoadTexture("../resource/tiles/right_corner_wall.png", renderer);
@@ -23,9 +23,9 @@ TextureMap Map(SDL_Renderer *renderer, int arr[100][100])
     text.floor = LoadTexture("../resource/tiles/floor_1.png", renderer);
 
     //LOAD MAP
-    for (int row = 0; row < 100; row++)
+    for (int row = 0; row < 16; row++)
     {
-        for(int column = 0; column < 100; column++)
+        for(int column = 0; column < 30; column++)
         {
             text . map[row][column] = arr[row][column];
         }
@@ -46,9 +46,9 @@ TextureMap Map(SDL_Renderer *renderer, int arr[100][100])
 void DrawMap(SDL_Renderer *renderer, TextureMap *text)
 {
     int type = 0;
-    for (int row = 0; row < 100; row++)
+    for (int row = 0; row < 16; row++)
     {
-        for(int column = 0; column < 100; column++)
+        for(int column = 0; column < 30; column++)
         {
             type = text -> map[row][column];
 
