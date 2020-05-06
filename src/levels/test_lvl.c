@@ -175,8 +175,8 @@ void Level2Loop(int wW, int wH)
   int up = 0;
   int down = 0;
 
-  int x_vel = 0;
-  int y_vel = 0;
+  float x_vel = 0;
+  float y_vel = 0;
 
   int dir = 0;
 
