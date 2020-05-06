@@ -132,7 +132,7 @@ typedef enum e_error
         void DrawMap(SDL_Renderer *renderer, TextureMap *text);
 
         /* Main Hero */
-        void HeroMove(t_direction direction, int x_vel, int y_vel,  SDL_Rect *windowRect);
+        void HeroMove(t_direction direction, float x_vel, float y_vel,  SDL_Rect *windowRect);
 
         /* levels */
         int Level0Loop();
