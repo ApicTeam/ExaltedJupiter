@@ -1,6 +1,5 @@
 #include "game.h"
 #include "minilib.h"
-#include "test/test.h"
 
 /**
  * TODO Main

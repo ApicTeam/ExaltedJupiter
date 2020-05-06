@@ -3,11 +3,6 @@
 
 SDL_Renderer *renderer = NULL;
 
-bool isBackround(int h)
-{
-  return (h != 16 && h != 1 && h != 2 && h != 7);
-}
-
 void Level2Loop(int wW, int wH)
 {
 //
