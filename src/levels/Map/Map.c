@@ -31,13 +31,14 @@ TextureMap Map(SDL_Renderer *renderer, int arr[100][100])
         }
     }
 
-    text . src.x = text . src.y = 0;
 
-    text . dest.x = text . dest.y = 0;
+  text . src.x = text . src.y = 0;
 
-    text . src.w = text . dest.w = text . src.h = text . dest.h = 64;
+  text . dest.x = text . dest.y = 0;
 
-    return text;
+  text . src.w = text . dest.w = text . src.h = text . dest.h = 64;
+
+  return text;
 
 }
 
@@ -51,8 +52,8 @@ void DrawMap(SDL_Renderer *renderer, TextureMap *text)
         {
             type = text -> map[row][column];
 
-            text -> dest.x = column * 64;
-            text -> dest.y = row * 64;
+      text -> dest.x = column * 64;
+      text -> dest.y = row * 64;
 
             switch (type)
             {

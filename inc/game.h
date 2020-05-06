@@ -16,17 +16,17 @@
 //}            t_anim_state;
 
 /* Prototypes */
-    /* Game Parts */
-        /* Base Parts*/
-            int GameMain();
-            void InitializeSDL();
-            SDL_Window *CreateWindow(int wW, int wH);
-            SDL_Renderer *CreateRenderer(SDL_Window *window);
+/* Game Parts */
+/* Base Parts*/
+int GameMain();
+void InitializeSDL();
+SDL_Window *CreateWindow(int wW, int wH);
+SDL_Renderer *CreateRenderer(SDL_Window *window);
 
-        /* Render Parts */
-            SDL_Texture *LoadTexture(const char *filepath, SDL_Renderer *renderer);
-            void RenderTextureByInput(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y, int w, int h);
-            void RenderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y);
+/* Render Parts */
+SDL_Texture *LoadTexture(const char *filepath, SDL_Renderer *renderer);
+void RenderTextureByInput(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y, int w, int h);
+void RenderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y);
 //            SDL_Texture *RenderHero(int frame, t_anim_state state, SDL_Renderer *renderer);
 
         /* Map Part */
@@ -34,7 +34,7 @@
         void DrawMap(SDL_Renderer *renderer, TextureMap *text);
 
         /* Main Hero */
-        void HeroMove(t_direction direction, int x_vel, int y_vel,  SDL_Rect *windowRect);
+        void HeroMove(t_direction direction, float x_vel, float y_vel,  SDL_Rect *windowRect);
         void create_hero(SDL_Renderer *, t_mainHero *, int, int);
         void hero_render(SDL_Renderer *, t_mainHero *, bool);
         bool hero_collision_detect(TextureMap, t_mainHero);
@@ -45,10 +45,10 @@
         void Level1Loop(int wW, int wH);
         void Level2Loop(int wW, int wH);
 
-        /* Animations */
-        SDL_Texture *Animation(t_animation *tAnimation);
-        SDL_Texture *AnimateByFrames(t_frameanim *tFrameanim);
-        t_texture_ss LoadSpriteSheet(SDL_Texture *texture, SDL_Rect textureRect, SDL_Rect frameRect, int frame_count);
+/* Animations */
+SDL_Texture *Animation(t_animation *tAnimation);
+SDL_Texture *AnimateByFrames(t_frameanim *tFrameanim);
+t_texture_ss LoadSpriteSheet(SDL_Texture *texture, SDL_Rect textureRect, SDL_Rect frameRect, int frame_count);
 
         /*Enemies*/
         double get_normalized_x(t_animation, t_enemy *);
