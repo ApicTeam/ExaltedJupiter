@@ -30,7 +30,7 @@ TextureMap Map(SDL_Renderer *renderer, int arr[100][100])
             text . map[row][column] = arr[row][column];
         }
     }
-  }
+
 
   text . src.x = text . src.y = 0;
 
@@ -110,5 +110,4 @@ void DrawMap(SDL_Renderer *renderer, TextureMap *text)
             }
         }
     }
-  }
 }

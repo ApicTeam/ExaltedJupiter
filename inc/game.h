@@ -34,7 +34,7 @@ void RenderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y);
         void DrawMap(SDL_Renderer *renderer, TextureMap *text);
 
         /* Main Hero */
-        void HeroMove(t_direction direction, int x_vel, int y_vel,  SDL_Rect *windowRect);
+        void HeroMove(t_direction direction, float x_vel, float y_vel,  SDL_Rect *windowRect);
         void create_hero(SDL_Renderer *, t_mainHero *, int, int);
         void hero_render(SDL_Renderer *, t_mainHero *, bool);
         bool hero_collision_detect(TextureMap, t_mainHero);

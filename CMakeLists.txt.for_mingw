@@ -14,7 +14,7 @@ include_directories(${SDL2_IMAGE_DIRS})
 include_directories(inc)
 
 add_executable(ExaltedJupiter_dev main.c inc/game.h src/game.c inc/minilib.h src/sdl_configs/sdl_initialization.c src/utils/error_handler.c src/sdl_configs/sdl_base.c src/sdl_configs/sdl_utils.c src/render/render_hero.c src/utils/garbage_collector.c src/hero/movment/move_manager.c src/hero/animation/animation.c src/levels/lvl0/create_lvl.c src/levels/main_menu/create_lvl.c src/levels/test/create_lvl.c src/levels/lvl0/enemy_generator.c src/utils/utils.c inc/main_menu/mm_lib.h
-        src/levels/Map/Map.c src/levels/test_lvl.c)
+        src/levels/Map/Map.c src/levels/test_lvl.c src/enemies/knight/create_knight.c inc/Structures.h src/enemies/knight/knight_behaviour.c src/enemies/get_distance_to_hero.c src/enemies/knight/knight_render.c src/enemies/animate_enemy.c src/levels/isBackground.c src/enemies/knight/knight_collision_detect.c src/enemies/get_normalized_x.c src/enemies/get_normalized_y.c src/hero/create_hero.c src/hero/hero_render.c src/hero/hero_collision_detect.c )
 target_link_libraries(ExaltedJupiter_dev m ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} ${SDL2_MIXER_LIBRARIES} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
 
 # target_link_libraries(ExaltedJupiter_dev m -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
