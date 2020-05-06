@@ -101,7 +101,9 @@ typedef struct s_mainHero
     char *name;
     int velX;
     int velY;
-
+    unsigned int invulnerability_timer;
+    bool invulnerability;
+    bool alive;
     //t_baseTexture gameData;
 }              t_mainHero;
 

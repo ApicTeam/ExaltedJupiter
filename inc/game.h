@@ -51,12 +51,13 @@ SDL_Texture *AnimateByFrames(t_frameanim *tFrameanim);
 t_texture_ss LoadSpriteSheet(SDL_Texture *texture, SDL_Rect textureRect, SDL_Rect frameRect, int frame_count);
 
         /*Enemies*/
+        void enemy_do_damage(t_mainHero *, t_enemy);
         double get_normalized_x(t_animation, t_enemy *);
         double get_normalized_y(t_animation, t_enemy *);
         double get_distance_to_hero(t_animation, t_enemy);
         SDL_Texture *animate_enemy(t_animation *);
         void create_knight(SDL_Renderer *, t_enemy *, int, int);
-        void knight_behaviour(t_animation *, t_enemy *, TextureMap, SDL_Renderer *);
+        void knight_behaviour(t_mainHero *, t_enemy *, TextureMap, SDL_Renderer *);
         void knight_render(SDL_Renderer *, t_enemy *, bool);
         bool knight_collision_detect(TextureMap text, t_animation, t_enemy *knight);
 
