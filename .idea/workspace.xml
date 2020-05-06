@@ -30,8 +30,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0147c4b8-b1aa-4a07-942e-6a5312f768ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/tiles/floor_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/enemies/get_normalized_x.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/enemies/get_normalized_y.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/enemies/knight/knight_collision_detect.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hero/create_hero.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hero/hero_collision_detect.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inc/Structures.h" beforeDir="false" afterPath="$PROJECT_DIR$/inc/Structures.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inc/game.h" beforeDir="false" afterPath="$PROJECT_DIR$/inc/game.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enemies/knight/create_knight.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/enemies/knight/create_knight.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enemies/knight/knight_behaviour.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/enemies/knight/knight_behaviour.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enemies/knight/knight_render.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/enemies/knight/knight_render.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hero/animation/animation.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/hero/animation/animation.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/levels/Map/Map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/Map/Map.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/levels/test_lvl.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels/test_lvl.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,10 +69,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.advertisement.text.overridden" value="true" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resource/characters/enemy_knight/idle" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resource/tiles" />
+    <property name="settings.editor.selected.configurable" value="dynamic.analysis.tools.valgrind" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resource/tiles" />
       <recent name="$PROJECT_DIR$/resource/characters/enemy_knight/idle" />
       <recent name="$PROJECT_DIR$/resource/characters/enemy_knight/run" />
       <recent name="$PROJECT_DIR$/resource/characters/enemy_knight/hit" />
@@ -91,6 +106,8 @@
       <workItem from="1588573355048" duration="599000" />
       <workItem from="1588681256712" duration="708000" />
       <workItem from="1588682013431" duration="27580000" />
+      <workItem from="1588754754443" duration="12204000" />
+      <workItem from="1588767537186" duration="1096000" />
     </task>
     <servers />
   </component>
@@ -117,32 +134,33 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1588594320107">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1588594320107" />
-    <state width="1807" height="270" key="GridCell.Tab.0.bottom" timestamp="1588711426859">
+    <state width="1807" height="270" key="GridCell.Tab.0.bottom" timestamp="1588769014664">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588546402185" />
-    <state width="1807" height="270" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588711426859" />
-    <state width="1807" height="270" key="GridCell.Tab.0.center" timestamp="1588711426857">
+    <state width="1807" height="270" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588769014664" />
+    <state width="1807" height="270" key="GridCell.Tab.0.center" timestamp="1588769014662">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588546402185" />
-    <state width="1807" height="270" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588711426857" />
-    <state width="1807" height="270" key="GridCell.Tab.0.left" timestamp="1588711426856">
+    <state width="1807" height="270" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588769014662" />
+    <state width="1807" height="270" key="GridCell.Tab.0.left" timestamp="1588769014660">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588546402185" />
-    <state width="1807" height="270" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588711426856" />
-    <state width="1807" height="270" key="GridCell.Tab.0.right" timestamp="1588711426858">
+    <state width="1807" height="270" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588769014660" />
+    <state width="1807" height="270" key="GridCell.Tab.0.right" timestamp="1588769014663">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588546402185" />
-    <state width="1807" height="270" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588711426858" />
+    <state width="1807" height="270" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588769014663" />
     <state width="1877" height="298" key="GridCell.Tab.1.bottom" timestamp="1588546402186">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -163,6 +181,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="761" y="255" width="454" height="595" key="RollbackChangesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588697228066" />
+    <state x="482" y="187" key="SettingsEditor" timestamp="1588756346356">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1588756346356" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

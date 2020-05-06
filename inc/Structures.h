@@ -32,10 +32,11 @@ typedef struct Textures
     SDL_Texture *wallInnerCornerTopRight;
     SDL_Texture *wallInnerCornerDownLeft;
     SDL_Texture *wallInnerCornerDownRight;
+    SDL_Texture *floor;
 
     SDL_Rect  dest, src ;
 
-    int map[20][25];
+    int map[100][100];
 }                  TextureMap;
 
 typedef struct s_animation
@@ -69,7 +70,40 @@ typedef struct s_enemy
     SDL_Rect textureRect;
     SDL_Texture *HostileT;
     t_animation HostileA;
+    int speed;
+    int health;
+    int base_damage;
 }              t_enemy;
+
+typedef struct s_baseTexture
+{
+    SDL_Texture *texture;
+
+    int totalFrames;
+    int delayPerFrame;
+
+    bool animate;
+
+    SDL_Rect frameRect;
+    SDL_Rect sizeRect;
+
+}            t_baseTexture;
+
+typedef struct s_mainHero
+{
+    SDL_Rect windowRect;
+    SDL_Rect textureRect;
+    SDL_Texture *HeroT;
+    t_animation HeroA;
+    int health;
+    int base_damage;
+    int xp;
+    char *name;
+    int velX;
+    int velY;
+
+    //t_baseTexture gameData;
+}              t_mainHero;
 
 /* Enumerations */
 

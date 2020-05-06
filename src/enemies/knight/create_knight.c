@@ -2,7 +2,7 @@
 /**
  * params SDL_Renderer *renderer
  * params t_enemy *knight*/
-void *create_knight(SDL_Renderer *renderer, t_enemy *knight, int x_coord, int y_coord){
+void create_knight(SDL_Renderer *renderer, t_enemy *knight, int x_coord, int y_coord){
         knight->windowRect.x = x_coord;
         knight->windowRect.y = y_coord;
         knight->windowRect.w = 80;
@@ -19,5 +19,9 @@ void *create_knight(SDL_Renderer *renderer, t_enemy *knight, int x_coord, int y_
         knight->HostileA.filepath = "../resource/characters/enemy_knight/idle/Knight_f_idle_spritesheet.png";
         knight->HostileA.delayPerFrame = 255;
         knight->HostileA.totalFrames = 4;
+
+        knight->speed = 240;
+        knight->health = 100;
+        knight->base_damage = 10;
 }
 

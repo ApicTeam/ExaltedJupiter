@@ -1,13 +1,8 @@
-//
-// Created by Иван on 03.05.2020.
-//
 #include "game.h"
 
-#include "minilib.h"
 
 
-
-TextureMap Map(SDL_Renderer *renderer, int arr[20][25])
+TextureMap Map(SDL_Renderer *renderer, int arr[100][100])
 {
     TextureMap text;
     text.backGroundCornerRight = LoadTexture("../resource/tiles/right_corner_wall.png", renderer);
@@ -25,11 +20,12 @@ TextureMap Map(SDL_Renderer *renderer, int arr[20][25])
     text.wallInnerCornerTopLeft = LoadTexture("../resource/tiles/wall_inner_corner_l_top_left.png", renderer);
     text.wallInnerCornerDownLeft = LoadTexture("../resource/tiles/top_left_corner.png", renderer);
     text.wallInnerCornerDownRight = LoadTexture("../resource/tiles/top_right_corner.png", renderer);
+    text.floor = LoadTexture("../resource/tiles/floor_1.png", renderer);
 
-  //LOAD MAP
-    for (int row = 0; row < 20; row++)
+    //LOAD MAP
+    for (int row = 0; row < 100; row++)
     {
-        for(int column = 0; column < 25; column++)
+        for(int column = 0; column < 100; column++)
         {
             text . map[row][column] = arr[row][column];
         }
@@ -49,10 +45,9 @@ TextureMap Map(SDL_Renderer *renderer, int arr[20][25])
 void DrawMap(SDL_Renderer *renderer, TextureMap *text)
 {
     int type = 0;
-
-    for (int row = 0; row < 20; row++)
+    for (int row = 0; row < 100; row++)
     {
-        for(int column = 0; column < 25; column++)
+        for(int column = 0; column < 100; column++)
         {
             type = text -> map[row][column];
 
@@ -61,49 +56,52 @@ void DrawMap(SDL_Renderer *renderer, TextureMap *text)
 
             switch (type)
             {
-                case -3:
-                    SDL_RenderCopy(renderer, text -> backGroundCornerRight, &(text -> src), &(text -> dest));
-                    break;
-                case -2:
-                    SDL_RenderCopy(renderer, text -> backGroundCornerLeft, &(text -> src), &(text -> dest));
-                    break;
-                case -1:
-                    SDL_RenderCopy(renderer, text -> backGroundWall, &(text -> src), &(text -> dest));
-                    break;
-                case 1:
-                    SDL_RenderCopy(renderer, text -> wallDown, &(text -> src), &(text -> dest));
+                case 16:
+                    SDL_RenderCopy(renderer, text -> floor, &(text -> src), &(text -> dest));
                     break;
                 case 2:
-                    SDL_RenderCopy(renderer, text -> wallUp, &(text -> src), &(text -> dest));
+                    SDL_RenderCopy(renderer, text -> backGroundCornerRight, &(text -> src), &(text -> dest));
                     break;
-                case 3:
-                    SDL_RenderCopy(renderer, text -> wallLeft, &(text -> src), &(text -> dest));
-                    break;
-                case 4:
-                    SDL_RenderCopy(renderer, text -> wallRight, &(text -> src), &(text -> dest));
-                    break;
-                case 5:
-                    SDL_RenderCopy(renderer, text -> wallOuterCornerDownLeft, &(text -> src), &(text -> dest));
-                    break;
-                case 6:
-                    SDL_RenderCopy(renderer, text -> wallOuterCornerDownRight, &(text -> src), &(text -> dest));
+                case 1:
+                    SDL_RenderCopy(renderer, text -> backGroundCornerLeft, &(text -> src), &(text -> dest));
                     break;
                 case 7:
-                    SDL_RenderCopy(renderer, text -> wallInnerCornerTopLeft, &(text -> src), &(text -> dest));
+                    SDL_RenderCopy(renderer, text -> backGroundWall, &(text -> src), &(text -> dest));
                     break;
-                case 8:
-                    SDL_RenderCopy(renderer, text -> wallInnerCornerTopRight, &(text -> src), &(text -> dest));
+                case 0:
+                    SDL_RenderCopy(renderer, text -> wallDown, &(text -> src), &(text -> dest));
+                    break;
+                case 13:
+                    SDL_RenderCopy(renderer, text -> wallUp, &(text -> src), &(text -> dest));
                     break;
                 case 9:
-                    SDL_RenderCopy(renderer, text -> wallInnerCornerDownLeft, &(text -> src), &(text -> dest));
+                    SDL_RenderCopy(renderer, text -> wallLeft, &(text -> src), &(text -> dest));
                     break;
                 case 10:
-                    SDL_RenderCopy(renderer, text -> wallInnerCornerDownRight, &(text -> src), &(text -> dest));
+                    SDL_RenderCopy(renderer, text -> wallRight, &(text -> src), &(text -> dest));
                     break;
                 case 11:
-                    SDL_RenderCopy(renderer, text -> wallOuterCornerTopLeft, &(text -> src), &(text -> dest));
+                    SDL_RenderCopy(renderer, text -> wallOuterCornerDownLeft, &(text -> src), &(text -> dest));
                     break;
                 case 12:
+                    SDL_RenderCopy(renderer, text -> wallOuterCornerDownRight, &(text -> src), &(text -> dest));
+                    break;
+                case 5:
+                    SDL_RenderCopy(renderer, text -> wallInnerCornerTopLeft, &(text -> src), &(text -> dest));
+                    break;
+                case 6:
+                    SDL_RenderCopy(renderer, text -> wallInnerCornerTopRight, &(text -> src), &(text -> dest));
+                    break;
+                case 3:
+                    SDL_RenderCopy(renderer, text -> wallInnerCornerDownLeft, &(text -> src), &(text -> dest));
+                    break;
+                case 4:
+                    SDL_RenderCopy(renderer, text -> wallInnerCornerDownRight, &(text -> src), &(text -> dest));
+                    break;
+                case 14:
+                    SDL_RenderCopy(renderer, text -> wallOuterCornerTopLeft, &(text -> src), &(text -> dest));
+                    break;
+                case 8:
                     SDL_RenderCopy(renderer, text -> wallOuterCornerTopRight, &(text -> src), &(text -> dest));
                     break;
                 default:

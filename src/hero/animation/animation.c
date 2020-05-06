@@ -13,10 +13,10 @@ SDL_Texture *Animation(t_animation *tAnimation)//SDL_Rect *windowRect, SDL_Rect 
     /* Initialize Structures */
     if (tAnimation->textureRect -> w == 0 || tAnimation->windowsRect -> w == 0)
     {
-        tAnimation->windowsRect -> x = 300;
+        /*tAnimation->windowsRect -> x = 300;
         tAnimation->windowsRect -> y = 250;
         tAnimation->windowsRect -> w = 150;
-        tAnimation->windowsRect -> h = 150;
+        tAnimation->windowsRect -> h = 150;*/
 
         tAnimation->textureRect -> x = 0;
         tAnimation->textureRect -> y = 0;
